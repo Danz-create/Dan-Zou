@@ -1,17 +1,19 @@
-/* ============ Design tokens ============ */
-:root{
-  /* 品牌主色：改这一行即可（示例：紫） */
-  --brand: #8b5cf6;        /* 例如 改成 #10b981（绿）、#fb7185（珊瑚）、#0ea5e9（青） */
-  --brand-ink: #ffffff;
-  --ink: #111111;
-  --muted: #575757;
-
-  /* 组件圆角与阴影 */
-  --radius: 14px;
-  --shadow: 0 8px 18px rgba(0,0,0,.06);
+/* =========================================================
+   🎨 全局颜色与样式变量
+   修改这里的 --brand 会影响按钮 hover 边框等辅助元素
+   ========================================================= */
+:root {
+  --brand: #85a428;        /* 主色，用于 hover 边框或强调 */
+  --brand-ink: #ffffff;    /* 文字在主色背景上的颜色 */
+  --ink: #111111;          /* 主文字颜色 */
+  --muted: #575757;        /* 次要文字颜色 */
+  --radius: 14px;          /* 圆角大小 */
+  --shadow: 0 8px 18px rgba(0,0,0,.06); /* 阴影样式 */
 }
 
-/* ============ 全局基础微调 ============ */
+/* =========================================================
+   📄 基础结构 & 全局设置
+   ========================================================= */
 html, body {
   height: 100%;
 }
@@ -20,7 +22,7 @@ body {
   background: #ffffff;
 }
 
-/* 让页面主要内容在气泡画布之上 */
+/* 确保主要内容在气泡画布之上 */
 .masthead,
 .page__footer,
 .page,
@@ -31,35 +33,39 @@ body {
   z-index: 2;
 }
 
-/* ============ 全屏气泡画布 ============ */
-/* 将画布固定在视口，铺满全屏，位于最底层 */
-#dots-bg{
-  position: fixed;
-  inset: 0;
+/* =========================================================
+   🌫️ 全屏气泡背景
+   ========================================================= */
+#dots-bg {
+  position: fixed;    /* 固定在视口上，不随滚动 */
+  inset: 0;           /* 铺满整个页面 */
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
-  opacity: .42;           /* 透明度可按需调整 */
-  z-index: 0;
+  pointer-events: none; /* 不影响鼠标点击 */
+  opacity: .45;       /* 透明度（0~1） */
+  z-index: 0;         /* 放在最底层 */
 }
 
-/* ============ 首页英雄区（欢迎卡片） ============ */
-.hero-landing{
-  min-height: 88vh;       /* 让首屏基本满屏 */
+/* =========================================================
+   🏠 首页主体布局
+   ========================================================= */
+.hero-landing {
+  min-height: 88vh;          /* 基本满屏高度 */
   display: grid;
-  place-items: center;    /* 水平+垂直居中 */
+  place-items: center;       /* 水平+垂直居中 */
   padding: 7rem 1.25rem 5rem;
-  background: transparent; /* 背景由全屏画布承担 */
+  background: transparent;   /* 背景透明，让气泡可见 */
   overflow: hidden;
 }
 
-.hero-inner{
+.hero-inner {
   max-width: 980px;
   margin: 0 auto;
   text-align: center;
 }
 
-.hero-landing h1{
+/* 标题与说明 */
+.hero-landing h1 {
   font-size: clamp(2.2rem, 4vw, 3.5rem);
   line-height: 1.12;
   margin: 0 0 1rem;
@@ -67,15 +73,17 @@ body {
   color: var(--ink);
 }
 
-.hero-lead{
+.hero-lead {
   font-size: clamp(1.05rem, 1.2vw, 1.25rem);
   color: var(--muted);
   max-width: 900px;
   margin: 0 auto 1.4rem;
 }
 
-/* 标签 pills */
-.hero-tags{
+/* =========================================================
+   🔖 关键词标签
+   ========================================================= */
+.hero-tags {
   display: flex;
   gap: .6rem;
   flex-wrap: wrap;
@@ -83,7 +91,7 @@ body {
   margin: 1rem 0 2.2rem;
 }
 
-.pill{
+.pill {
   display: inline-block;
   padding: .48rem .85rem;
   border-radius: 999px;
@@ -94,15 +102,17 @@ body {
   color: #363636;
 }
 
-/* CTA 按钮组 */
-.hero-cta{
+/* =========================================================
+   🔘 三个主按钮（Publications / CV / Projects）
+   ========================================================= */
+.hero-cta {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.btn{
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -115,27 +125,41 @@ body {
   box-shadow: none;
 }
 
-.btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
-
-.btn-primary{
-  background: var(--brand);
-  color: var(--brand-ink);
-  border: none;
+/* 鼠标悬停时的浮起效果 */
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
 }
 
-.btn-plain{
-  background: #ffffff;
-  color: var(--ink);
+/* 1️⃣ Publications 按钮：蓝色 */
+.hero-cta a:nth-child(1) {
+  background: #3b82f6;
+  color: white;
 }
 
-/* ============ 响应式微调 ============ */
-@media (max-width: 640px){
-  .hero-landing{ padding: 5.5rem 1rem 4rem; }
-  .btn{ width: 100%; }
+/* 2️⃣ View CV 按钮：灰色 */
+.hero-cta a:nth-child(2) {
+  background: #9ca3af;
+  color: white;
 }
 
-/* ============ 与 Minimal Mistakes 协作 ============ */
-/* 让顶部间距更紧凑些（可按需删掉） */
-.page .page__inner-wrap > *:first-child{
+/* 3️⃣ Projects 按钮：橙色 */
+.hero-cta a:nth-child(3) {
+  background: #f97316;
+  color: white;
+}
+
+/* =========================================================
+   📱 响应式：移动端按钮全宽
+   ========================================================= */
+@media (max-width: 640px) {
+  .hero-landing { padding: 5.5rem 1rem 4rem; }
+  .btn { width: 100%; }
+}
+
+/* =========================================================
+   ⚙️ Minimal Mistakes 兼容微调
+   ========================================================= */
+.page .page__inner-wrap > *:first-child {
   margin-top: 0;
 }
