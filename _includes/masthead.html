@@ -1,24 +1,52 @@
-{% include base_path %}
+{% comment %}
+  Masthead override (Liquid 语法，避免 {# #} 这种 Jinja 注释)
+  - 非首页（page.url != '/'）给导航条加背景色 + 白字 + 收紧高度
+  - 链接统一用 relative_url，避免 baseurl 问题
+  - 想换色：改 NAV_BG / NAV_INK 常量即可
+{% endcomment %}
 
-<div class="masthead">
-  <div class="masthead__inner-wrap">
+{% assign NAV_BG  = '#7a2d14' %}   {%- comment -%} 导航背景色 {%- endcomment -%}
+{% assign NAV_INK = '#ffffff' %}   {%- comment -%} 导航文字色 {%- endcomment -%}
+
+<div class="masthead{% if page.url != '/' %} masthead--inner{% endif %}">
+  <div class="masthead__inner-wrap"
+       {% if page.url != '/' %}
+       style="background: {{ NAV_BG }}; border-bottom: 1px solid rgba(255,255,255,.18); padding-top:.35rem; padding-bottom:.35rem;"
+       {% endif %}>
+    <!-- 仅内页使用的内联样式，提高优先级，确保生效 -->
+    {% if page.url != '/' %}
+    <style>
+      .masthead--inner a,
+      .masthead--inner .site-title,
+      .masthead--inner #theme-toggle i { color: {{ NAV_INK }} !important; fill: {{ NAV_INK }} !important; }
+      .masthead--inner .greedy-nav .visible-links > li { margin: 0 .45rem; }
+      .masthead--inner .greedy-nav a { padding: .35rem .35rem; line-height: 1.2; }
+      @media (min-width:801px){ .masthead--inner ~ #main .sidebar.sticky { top: 72px; } }
+      .masthead--inner ~ #main { padding-top: .6rem; }
+    </style>
+    {% endif %}
+
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         <button><span class="navicon"></span></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg persist">
+            <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+          </li>
+
           {% for link in site.data.navigation.main %}
-            {% if link.url contains 'http' %}
-              {% assign domain = '' %}
-            {% else %}
-              {% assign domain = base_path %}
-            {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            <li class="masthead__menu-item">
+              <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
+            </li>
           {% endfor %}
+
           <li id="theme-toggle" class="masthead__menu-item persist tail">
-            <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
+            <a role="button" aria-labelledby="theme-icon">
+              <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i>
+            </a>
           </li>
         </ul>
+
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
