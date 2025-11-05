@@ -35,17 +35,27 @@ permalink: /
 </section>
 
 <script>
-(function() {
+(function () {
   const c = document.getElementById('dots-bg');
   if (!c) return;
   const ctx = c.getContext('2d');
   let w, h, dots = [];
 
-  /* === 气泡参数设置 === */
-  const R = 1.6;         // 每个气泡半径（原来是 2.6 → 更小更细腻）
-  const N = 100;         // 气泡数量
-  const SPEED = 0.25;    // 气泡移动速度
-  const COLOR = '#85a428'; // 💚 气泡颜色（你指定的绿色）
+  /* ====== 配置：颜色与尺寸 ====== */
+  const COLOR_HEX = '#85a428';  // 💚 你要的气泡颜色
+  const R = 1.6;                // 气泡半径（更小更细腻）
+  const N = 100;                // 气泡数量
+  const SPEED = 0.25;           // 移动速度
+
+  /* HEX -> RGBA，确保 Safari/老浏览器也正常 */
+  function hexToRgba(hex, alpha) {
+    const m = hex.replace('#','');
+    const bigint = parseInt(m, 16);
+    const r = (m.length===3) ? parseInt(m[0]+m[0],16) : (bigint >> 16) & 255;
+    const g = (m.length===3) ? parseInt(m[1]+m[1],16) : (bigint >> 8) & 255;
+    const b = (m.length===3) ? parseInt(m[2]+m[2],16) : bigint & 255;
+    return `rgba(${r},${g},${b},${alpha})`;
+  }
 
   function resize() {
     w = c.width = window.innerWidth;
@@ -65,13 +75,13 @@ permalink: /
   function draw() {
     ctx.clearRect(0, 0, w, h);
     dots.forEach(d => {
-      d.x += d.dx;
-      d.y += d.dy;
+      d.x += d.dx; d.y += d.dy;
       if (d.x < 0 || d.x > w) d.dx *= -1;
       if (d.y < 0 || d.y > h) d.dy *= -1;
+
       const g = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r * 6);
-      g.addColorStop(0, COLOR + 'e6'); // 气泡中心颜色（略亮）
-      g.addColorStop(1, COLOR + '00'); // 气泡外缘透明
+      g.addColorStop(0, hexToRgba(COLOR_HEX, 0.9));  // 中心颜色
+      g.addColorStop(1, hexToRgba(COLOR_HEX, 0.0));  // 外缘透明
       ctx.fillStyle = g;
       ctx.beginPath();
       ctx.arc(d.x, d.y, d.r * 6, 0, Math.PI * 2);
@@ -81,9 +91,8 @@ permalink: /
   }
 
   window.addEventListener('resize', () => { resize(); init(); });
-  resize();
-  init();
-  draw();
+  resize(); init(); draw();
 })();
 </script>
+
 
