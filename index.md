@@ -94,5 +94,7 @@ permalink: /
   resize(); init(); draw();
 })();
 </script>
+<canvas id="dots-bg" aria-hidden="true"></canvas>
+<script src="{{ '/assets/js/dots.js' | relative_url }}"></script>
 
 
