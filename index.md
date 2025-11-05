@@ -24,7 +24,7 @@ permalink: /
     </div>
 
     <div class="hero-cta">
-      <a class="btn btn-primary" href="{{ '/publications/' | relative_url }}">Publications →</a>
+      <a class="btn btn-primary" href="{{ '/publications/' | relative_url }}">Publications</a>
       <a class="btn btn-plain" href="{{ '/cv/' | relative_url }}">View CV</a>
       <a class="btn btn-plain" href="{{ '/project/' | relative_url }}">Projects</a>
     </div>
