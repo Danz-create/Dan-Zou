@@ -16,64 +16,45 @@
     <!-- 仅内页使用的内联样式，提高优先级，确保生效 -->
     {% if page.url != '/' %}
 {% if page.url != '/' %}
-{% if page.url != '/' %}
 <style>
-  /* ========== 内页：导航整条背景 + 文字可见（强覆盖） ========== */
+  /* ==== 导航整条改为红棕色（包含内层与 nav 容器） ==== */
   .masthead--inner,
   .masthead--inner .masthead__inner-wrap,
   .masthead--inner .greedy-nav {
-    background: #7a2d14 !important;                         /* ← 导航背景（红棕） */
+    background: #7a2d14 !important;                 /* ← 导航背景色 */
     border-bottom: 1px solid rgba(255,255,255,.18) !important;
     box-shadow: none !important;
   }
 
-  /* 导航里的所有链接/标题/图标都变白（含各种状态选择器） */
+  /* 导航里的文字/图标全部白色 */
+  .masthead--inner a,
   .masthead--inner .site-title,
-  .masthead--inner .greedy-nav a,
-  .masthead--inner .greedy-nav a:link,
-  .masthead--inner .greedy-nav a:visited,
-  .masthead--inner .greedy-nav a:active,
   .masthead--inner #theme-toggle i {
     color: #ffffff !important;
     fill: #ffffff !important;
   }
-  .masthead--inner .greedy-nav a:hover { color: #ffe3c4 !important; }
 
   /* 收紧导航高度与间距，避免与头像重叠 */
-  .masthead--inner .greedy-nav .visible-links > li { margin: 0 .5rem !important; }
-  .masthead--inner .greedy-nav a { padding: .35rem .4rem !important; line-height: 1.2 !important; font-size: 1rem !important; }
-  .masthead--inner { padding-top:.4rem !important; padding-bottom:.4rem !important; }
+  .masthead--inner .greedy-nav .visible-links > li { margin: 0 .45rem !important; }
+  .masthead--inner .greedy-nav a { padding: .35rem .35rem !important; line-height: 1.2 !important; }
 
-  /* ========== 内页：左侧栏加宽 + 字体放大 + 背景同色 ========== */
+  /* ==== 左侧栏（含头像区）改为红棕色，文字白色 ==== */
   .masthead--inner ~ #main .sidebar {
-    background: #7a2d14 !important;                         /* ← 侧栏背景（红棕） */
+    background: #7a2d14 !important;                 /* ← 侧栏背景 */
     color: #ffffff !important;
-    width: 300px !important;                                 /* ← 想更宽改这里，比如 320/340 */
-    font-size: 1rem !important;                              /* ← 侧栏文字更大 */
-    line-height: 1.6 !important;
-    padding: 1.2rem 1.4rem !important;
   }
   .masthead--inner ~ #main .sidebar a { color: #ffffff !important; }
   .masthead--inner ~ #main .sidebar a:hover { color: #f2c8b0 !important; }
   .masthead--inner ~ #main .sidebar .author__avatar { background: transparent !important; }
-  .masthead--inner ~ #main .sidebar .author__avatar img { border-radius: 50%; width: 120px !important; height: 120px !important; }
+  .masthead--inner ~ #main { padding-top: .6rem; }
 
-  /* ========== 主体列为侧栏让路（不同主题容器名都兜住） ========== */
-  .masthead--inner ~ #main .archive,
-  .masthead--inner ~ #main .page,
-  .masthead--inner ~ #main .page__content,
-  .masthead--inner ~ #main .initial-content {
-    margin-left: 320px !important;                           /* = 侧栏宽度(300) + 20 间距 */
-  }
-
-  /* 桌面端：sticky 侧栏避让导航 */
+  /* 桌面端：给粘性侧栏留出避让高度，必要时把 72 调成 76/84 试试 */
   @media (min-width:801px){
     .masthead--inner ~ #main .sidebar.sticky { top: 72px !important; }
   }
-
-  /* 让内页标题更紧凑，避免被顶到 */
-  .masthead--inner ~ #main .page__title { margin-top: .4rem !important; }
 </style>
+{% endif %}
+
 {% endif %}
     {% endif %}
 
