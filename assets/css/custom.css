@@ -242,7 +242,7 @@ body {
 .pill {
   background: transparent !important;   /* 去底色 */
   border: none !important;              /* 去边框 */
-  color: #f6a7b6 !important;            /* 浅粉色（你可换成自己喜欢的粉） */
+  color: #c4e283 !important;            /* 浅粉色（你可换成自己喜欢的粉） */
   font-weight: 400;
   box-shadow: none !important;
 }
