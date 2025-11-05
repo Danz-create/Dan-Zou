@@ -224,4 +224,114 @@ body {
 .layout--single  #theme-toggle a {
   padding: 0.25rem 0.35rem;
 }
+/* =========================================================
+   (A) 全站字体（正文用 Inter/系统，主标题用 Poppins/系统）
+   ========================================================= */
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+               Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+.hero-landing h1,
+.page__title {
+  font-family: "Poppins", ui-sans-serif, "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* =========================================================
+   (B) 首页标签：浅粉色、无边框、无底色
+   ========================================================= */
+.pill {
+  background: transparent !important;   /* 去底色 */
+  border: none !important;              /* 去边框 */
+  color: #f6a7b6 !important;            /* 浅粉色（你可换成自己喜欢的粉） */
+  font-weight: 600;
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   (C) 首页按钮：如果有人忘记删箭头，用 CSS 也隐藏它（兜底）
+   ========================================================= */
+.hero-cta a.btn-primary::after { content: none !important; }
+
+/* =========================================================
+   (D) 内页（如 publications/cv/project）顶部间距过大 & 导航与头像重叠
+       - 压缩 masthead 高度
+       - 侧栏 sticky 顶部留白
+       - 页面主体上方留白
+   ========================================================= */
+.layout--archive .masthead,
+.layout--single  .masthead {
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+}
+
+/* 菜单项收紧，避免占太宽 */
+.layout--archive .greedy-nav .visible-links > li,
+.layout--single  .greedy-nav .visible-links > li {
+  margin: 0 0.45rem;
+}
+.layout--archive .greedy-nav a,
+.layout--single  .greedy-nav a {
+  padding: 0.35rem 0.35rem;
+  line-height: 1.2;
+}
+
+/* 侧栏头像与顶部避免重叠（按实际高度可把 72px 微调到 68/80） */
+@media (min-width: 801px) {
+  .layout--archive .sidebar.sticky,
+  .layout--single  .sidebar.sticky {
+    top: 72px;
+  }
+}
+
+/* 主体与导航之间增加一点上内边距 */
+.layout--archive #main,
+.layout--single  #main {
+  padding-top: 0.6rem;
+}
+
+/* =========================================================
+   (E) 内页导航背景色改成和“导航按钮一样”的颜色（自定义这里）
+       - 设置你想要的导航背景与文字颜色
+   ========================================================= */
+:root {
+  --nav-bg: #7a2d14;  /* 导航背景色：这里我用的是你按钮类似的棕色，可自行改 */
+  --nav-ink: #ffffff; /* 导航文字颜色（白） */
+  --nav-divider: rgba(255,255,255,0.15); /* 底部分隔线（可选） */
+}
+
+/* 只在内页改导航背景与文字颜色（首页仍保持净空） */
+.layout--archive .masthead,
+.layout--single  .masthead {
+  background: var(--nav-bg) !important;
+  border-bottom: 1px solid var(--nav-divider) !important;
+  box-shadow: none;
+}
+.layout--archive .greedy-nav a,
+.layout--single  .greedy-nav a,
+.layout--archive .site-title,
+.layout--single  .site-title {
+  color: var(--nav-ink) !important;
+}
+
+/* 如果右侧有主题切换/图标，也统一颜色 */
+.layout--archive #theme-toggle a,
+.layout--single  #theme-toggle a,
+.layout--archive #theme-toggle i,
+.layout--single  #theme-toggle i {
+  color: var(--nav-ink) !important;
+}
+
+/* 鼠标悬停时轻微变亮（可选） */
+.layout--archive .greedy-nav a:hover,
+.layout--single  .greedy-nav a:hover {
+  opacity: 0.9;
+}
+
+/* =========================================================
+   (F) 让内页标题更紧凑点，避免“标题”也顶到导航
+   ========================================================= */
+.layout--archive .page__title,
+.layout--single  .page__title {
+  margin-top: .4rem;
+}
 
