@@ -163,3 +163,55 @@ body {
 .page .page__inner-wrap > *:first-child {
   margin-top: 0;
 }
+/* =======================
+   内页导航栏压缩 + 侧栏避让
+   作用范围：Minimal Mistakes 的 archive/single 布局
+   ======================= */
+
+/* 1) 压缩内页顶部 masthead 的上下内边距，降低整体高度 */
+.layout--archive .masthead,
+.layout--single  .masthead {
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+}
+
+/* 2) 收紧菜单项左右间距，避免一行过宽 */
+.layout--archive .greedy-nav .visible-links > li,
+.layout--single  .greedy-nav .visible-links > li {
+  margin: 0 0.45rem;               /* 原来一般 ~0.8rem，这里缩小到 0.45rem */
+}
+
+/* 3) 收紧链接文字的水平内边距，进一步节省宽度 */
+.layout--archive .greedy-nav a,
+.layout--single  .greedy-nav a {
+  padding: 0.35rem 0.35rem;         /* 原来更宽，这里略收紧 */
+  line-height: 1.2;
+}
+
+/* 4) 稍微降低站点标题字号，给菜单留更多空间 */
+.layout--archive .masthead__menu-item--lg a.site-title,
+.layout--single  .masthead__menu-item--lg a.site-title {
+  font-size: 1.0rem;
+}
+
+/* 5) 侧栏（含头像）是 sticky：加一个与 masthead 高度匹配的 top，避免被压住
+   可根据你实际导航高度微调 68px 这个数值 */
+@media (min-width: 801px) { /* 只在桌面端生效 */
+  .layout--archive .sidebar.sticky,
+  .layout--single  .sidebar.sticky {
+    top: 68px;                       /* 导航高度 + 一点安全边距 */
+  }
+}
+
+/* 6) 内页主体与导航之间加一点上内边距，进一步避免重叠 */
+.layout--archive #main,
+.layout--single  #main {
+  padding-top: 0.5rem;
+}
+
+/* 7) 如果你的导航右侧有主题切换/图标，把它也收紧一点（可选） */
+.layout--archive #theme-toggle a,
+.layout--single  #theme-toggle a {
+  padding: 0.25rem 0.35rem;
+}
+
