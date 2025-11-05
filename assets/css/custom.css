@@ -133,19 +133,19 @@ body {
 
 /* 1️⃣ Publications 按钮：蓝色 */
 .hero-cta a:nth-child(1) {
-  background: #3b82f6;
+  background: #912c0d;
   color: white;
 }
 
 /* 2️⃣ View CV 按钮：灰色 */
 .hero-cta a:nth-child(2) {
-  background: #9ca3af;
+  background: #912c0d;
   color: white;
 }
 
 /* 3️⃣ Projects 按钮：橙色 */
 .hero-cta a:nth-child(3) {
-  background: #f97316;
+  background: #912c0d;
   color: white;
 }
 
