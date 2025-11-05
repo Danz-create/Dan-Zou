@@ -15,15 +15,46 @@
        {% endif %}>
     <!-- 仅内页使用的内联样式，提高优先级，确保生效 -->
     {% if page.url != '/' %}
-    <style>
-      .masthead--inner a,
-      .masthead--inner .site-title,
-      .masthead--inner #theme-toggle i { color: {{ NAV_INK }} !important; fill: {{ NAV_INK }} !important; }
-      .masthead--inner .greedy-nav .visible-links > li { margin: 0 .45rem; }
-      .masthead--inner .greedy-nav a { padding: .35rem .35rem; line-height: 1.2; }
-      @media (min-width:801px){ .masthead--inner ~ #main .sidebar.sticky { top: 72px; } }
-      .masthead--inner ~ #main { padding-top: .6rem; }
-    </style>
+{% if page.url != '/' %}
+<style>
+  /* ==== 导航整条改为红棕色（包含内层与 nav 容器） ==== */
+  .masthead--inner,
+  .masthead--inner .masthead__inner-wrap,
+  .masthead--inner .greedy-nav {
+    background: #7a2d14 !important;                 /* ← 导航背景色 */
+    border-bottom: 1px solid rgba(255,255,255,.18) !important;
+    box-shadow: none !important;
+  }
+
+  /* 导航里的文字/图标全部白色 */
+  .masthead--inner a,
+  .masthead--inner .site-title,
+  .masthead--inner #theme-toggle i {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+  }
+
+  /* 收紧导航高度与间距，避免与头像重叠 */
+  .masthead--inner .greedy-nav .visible-links > li { margin: 0 .45rem !important; }
+  .masthead--inner .greedy-nav a { padding: .35rem .35rem !important; line-height: 1.2 !important; }
+
+  /* ==== 左侧栏（含头像区）改为红棕色，文字白色 ==== */
+  .masthead--inner ~ #main .sidebar {
+    background: #7a2d14 !important;                 /* ← 侧栏背景 */
+    color: #ffffff !important;
+  }
+  .masthead--inner ~ #main .sidebar a { color: #ffffff !important; }
+  .masthead--inner ~ #main .sidebar a:hover { color: #f2c8b0 !important; }
+  .masthead--inner ~ #main .sidebar .author__avatar { background: transparent !important; }
+  .masthead--inner ~ #main { padding-top: .6rem; }
+
+  /* 桌面端：给粘性侧栏留出避让高度，必要时把 72 调成 76/84 试试 */
+  @media (min-width:801px){
+    .masthead--inner ~ #main .sidebar.sticky { top: 72px !important; }
+  }
+</style>
+{% endif %}
+
     {% endif %}
 
     <div class="masthead__menu">
