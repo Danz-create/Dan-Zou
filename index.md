@@ -18,9 +18,9 @@ permalink: /
     </p>
 
     <div class="hero-tags">
+      <span class="pill">Urban Health</span>
       <span class="pill">Human Mobility</span>
       <span class="pill">Geospatial AI</span>
-      <span class="pill">Urban Informatics</span>
     </div>
 
     <div class="hero-cta">
