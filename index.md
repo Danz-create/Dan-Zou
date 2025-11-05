@@ -3,6 +3,11 @@ layout: default
 title: "Dan Zou"
 permalink: /
 ---
+<style>
+  /* 首页隐藏导航和页脚（可按需去掉 footer 这行） */
+  .masthead { display: none !important; }
+  .page__footer { display: none !important; }
+</style>
 
 <section class="hero-landing">
   <div class="hero-inner">
