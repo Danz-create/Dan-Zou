@@ -1,24 +1,50 @@
-{% include base_path %}
+{% comment %}
+  Masthead override
+  - 内页（非首页）给导航条上背景色/白字，并收紧高度
+  - 所有链接用 relative_url，避免 baseurl 问题
+  - 如果你想换色，只改 NAV_BG / NAV_INK 即可
+{% endcomment %}
+{% assign IS_HOME = page.url == '/' %}
+{% assign NAV_BG  = '#7a2d14' %}   {# 导航背景色：改这里 #}
+{% assign NAV_INK = '#ffffff' %}   {# 导航文字色：改这里 #}
 
-<div class="masthead">
-  <div class="masthead__inner-wrap">
+<div class="masthead{% unless IS_HOME %} masthead--inner{% endunless %}">
+  <div class="masthead__inner-wrap"
+       {% unless IS_HOME %}
+       style="background: {{ NAV_BG }}; border-bottom: 1px solid rgba(255,255,255,.18); padding-top: .35rem; padding-bottom: .35rem;"
+       {% endunless %}>
+    <style>
+      /* 仅在内页生效的导航文字/图标配色与间距（用内联 <style> 提高优先级） */
+      .masthead--inner a,
+      .masthead--inner .site-title,
+      .masthead--inner #theme-toggle i { color: {{ NAV_INK }} !important; fill: {{ NAV_INK }} !important; }
+      .masthead--inner .greedy-nav .visible-links > li { margin: 0 .45rem; }
+      .masthead--inner .greedy-nav a { padding: .35rem .35rem; line-height: 1.2; }
+      @media (min-width:801px){ .masthead--inner ~ #main .sidebar.sticky { top: 72px; } }
+      .masthead--inner ~ #main { padding-top: .6rem; }
+    </style>
+
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         <button><span class="navicon"></span></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg persist">
+            <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+          </li>
+
           {% for link in site.data.navigation.main %}
-            {% if link.url contains 'http' %}
-              {% assign domain = '' %}
-            {% else %}
-              {% assign domain = base_path %}
-            {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            <li class="masthead__menu-item">
+              <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
+            </li>
           {% endfor %}
+
           <li id="theme-toggle" class="masthead__menu-item persist tail">
-            <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
+            <a role="button" aria-labelledby="theme-icon">
+              <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i>
+            </a>
           </li>
         </ul>
+
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
