@@ -1,46 +1,141 @@
-.hero-landing {
-  position: relative;
-  min-height: 70vh;
-  display: grid;
-  place-items: center;
-  padding: 6rem 1.25rem;
-  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02));
-  border-radius: 24px;
+/* ============ Design tokens ============ */
+:root{
+  /* 品牌主色：改这一行即可（示例：紫） */
+  --brand: #8b5cf6;        /* 例如 改成 #10b981（绿）、#fb7185（珊瑚）、#0ea5e9（青） */
+  --brand-ink: #ffffff;
+  --ink: #111111;
+  --muted: #575757;
+
+  /* 组件圆角与阴影 */
+  --radius: 14px;
+  --shadow: 0 8px 18px rgba(0,0,0,.06);
 }
 
-.hero-inner { max-width: 960px; text-align: left; }
+/* ============ 全局基础微调 ============ */
+html, body {
+  height: 100%;
+}
 
-.hero-landing h1 {
+body {
+  background: #ffffff;
+}
+
+/* 让页面主要内容在气泡画布之上 */
+.masthead,
+.page__footer,
+.page,
+.page__inner-wrap,
+.hero-landing,
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============ 全屏气泡画布 ============ */
+/* 将画布固定在视口，铺满全屏，位于最底层 */
+#dots-bg{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: .42;           /* 透明度可按需调整 */
+  z-index: 0;
+}
+
+/* ============ 首页英雄区（欢迎卡片） ============ */
+.hero-landing{
+  min-height: 88vh;       /* 让首屏基本满屏 */
+  display: grid;
+  place-items: center;    /* 水平+垂直居中 */
+  padding: 7rem 1.25rem 5rem;
+  background: transparent; /* 背景由全屏画布承担 */
+  overflow: hidden;
+}
+
+.hero-inner{
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-landing h1{
   font-size: clamp(2.2rem, 4vw, 3.5rem);
-  line-height: 1.15;
+  line-height: 1.12;
   margin: 0 0 1rem;
   font-weight: 800;
+  color: var(--ink);
 }
 
-.hero-lead {
+.hero-lead{
   font-size: clamp(1.05rem, 1.2vw, 1.25rem);
-  color: var(--text-muted, #555);
+  color: var(--muted);
   max-width: 900px;
-  margin: 0 0 1.25rem;
+  margin: 0 auto 1.4rem;
 }
 
-.hero-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 2rem; }
-.pill {
-  display: inline-block; padding: .45rem .8rem; border-radius: 999px;
-  background: #f2f4f7; border: 1px solid #e6e9ef; font-size: .95rem;
+/* 标签 pills */
+.hero-tags{
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 0 2.2rem;
 }
 
-.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: .9rem 1.25rem; border-radius: 14px; font-weight: 700; text-decoration: none;
-  border: 1px solid #e5e7eb; transition: transform .06s ease, box-shadow .2s ease;
+.pill{
+  display: inline-block;
+  padding: .48rem .85rem;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  font-size: .95rem;
+  line-height: 1;
+  color: #363636;
 }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.06); }
-.btn-primary { background: #3b82f6; color: #fff; border: none; }
-.btn-plain   { background: #fff; color: #111; }
 
-#dots-bg {
-  position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.45;
-  mix-blend-mode: normal;
+/* CTA 按钮组 */
+.hero-cta{
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .9rem 1.25rem;
+  border-radius: var(--radius);
+  font-weight: 800;
+  text-decoration: none !important;
+  border: 1px solid #e5e7eb;
+  transition: transform .06s ease, box-shadow .2s ease, opacity .2s ease;
+  box-shadow: none;
+}
+
+.btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
+
+.btn-primary{
+  background: var(--brand);
+  color: var(--brand-ink);
+  border: none;
+}
+
+.btn-plain{
+  background: #ffffff;
+  color: var(--ink);
+}
+
+/* ============ 响应式微调 ============ */
+@media (max-width: 640px){
+  .hero-landing{ padding: 5.5rem 1rem 4rem; }
+  .btn{ width: 100%; }
+}
+
+/* ============ 与 Minimal Mistakes 协作 ============ */
+/* 让顶部间距更紧凑些（可按需删掉） */
+.page .page__inner-wrap > *:first-child{
+  margin-top: 0;
 }
