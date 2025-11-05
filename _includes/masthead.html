@@ -1,61 +1,65 @@
-{% comment %}
-  Masthead override (Liquid 语法，避免 {# #} 这种 Jinja 注释)
-  - 非首页（page.url != '/'）给导航条加背景色 + 白字 + 收紧高度
-  - 链接统一用 relative_url，避免 baseurl 问题
-  - 想换色：改 NAV_BG / NAV_INK 常量即可
-{% endcomment %}
-
-{% assign NAV_BG  = '#7a2d14' %}   {%- comment -%} 导航背景色 {%- endcomment -%}
-{% assign NAV_INK = '#ffffff' %}   {%- comment -%} 导航文字色 {%- endcomment -%}
+{% assign NAV_BG  = '#7a2d14' %}   {%- comment -%} 内页导航背景色 {%- endcomment -%}
+{% assign NAV_INK = '#ffffff' %}   {%- comment -%} 内页导航文字色 {%- endcomment -%}
 
 <div class="masthead{% if page.url != '/' %} masthead--inner{% endif %}">
   <div class="masthead__inner-wrap"
        {% if page.url != '/' %}
-       style="background: {{ NAV_BG }}; border-bottom: 1px solid rgba(255,255,255,.18); padding-top:.35rem; padding-bottom:.35rem;"
+       style="background: {{ NAV_BG }}; border-bottom: 1px solid rgba(255,255,255,.18); padding-top:.4rem; padding-bottom:.4rem;"
        {% endif %}>
-    <!-- 仅内页使用的内联样式，提高优先级，确保生效 -->
+
     {% if page.url != '/' %}
-{% if page.url != '/' %}
-<style>
-  /* ==== 导航整条改为红棕色（包含内层与 nav 容器） ==== */
-  .masthead--inner,
-  .masthead--inner .masthead__inner-wrap,
-  .masthead--inner .greedy-nav {
-    background: #7a2d14 !important;                 /* ← 导航背景色 */
-    border-bottom: 1px solid rgba(255,255,255,.18) !important;
-    box-shadow: none !important;
-  }
+    <style>
+      /* 内页导航整条上色 & 白字 */
+      .masthead--inner,
+      .masthead--inner .masthead__inner-wrap,
+      .masthead--inner .greedy-nav{
+        background: {{ NAV_BG }} !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      .masthead--inner .site-title,
+      .masthead--inner .greedy-nav a,
+      .masthead--inner .greedy-nav a:link,
+      .masthead--inner .greedy-nav a:visited,
+      .masthead--inner .greedy-nav a:active,
+      .masthead--inner #theme-toggle i{
+        color: {{ NAV_INK }} !important;
+        fill:  {{ NAV_INK }} !important;
+      }
+      .masthead--inner .greedy-nav a:hover{ color:#ffe3c4 !important; }
 
-  /* 导航里的文字/图标全部白色 */
-  .masthead--inner a,
-  .masthead--inner .site-title,
-  .masthead--inner #theme-toggle i {
-    color: #ffffff !important;
-    fill: #ffffff !important;
-  }
+      /* 收紧导航间距，避免与头像重叠 */
+      .masthead--inner .greedy-nav .visible-links>li{ margin:0 .5rem !important; }
+      .masthead--inner .greedy-nav a{ padding:.35rem .4rem !important; line-height:1.2 !important; font-size:1rem !important; }
 
-  /* 收紧导航高度与间距，避免与头像重叠 */
-  .masthead--inner .greedy-nav .visible-links > li { margin: 0 .45rem !important; }
-  .masthead--inner .greedy-nav a { padding: .35rem .35rem !important; line-height: 1.2 !important; }
+      /* 左侧栏上色 + 加宽 + 更大字号 */
+      .masthead--inner ~ #main .sidebar{
+        background: {{ NAV_BG }} !important;
+        color: {{ NAV_INK }} !important;
+        width: 300px !important;
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        padding: 1.2rem 1.4rem !important;
+      }
+      .masthead--inner ~ #main .sidebar a{ color: {{ NAV_INK }} !important; }
+      .masthead--inner ~ #main .sidebar a:hover{ color:#f2c8b0 !important; }
+      .masthead--inner ~ #main .sidebar .author__avatar{ background:transparent !important; }
+      .masthead--inner ~ #main .sidebar .author__avatar img{ border-radius:50%; width:120px !important; height:120px !important; }
 
-  /* ==== 左侧栏（含头像区）改为红棕色，文字白色 ==== */
-  .masthead--inner ~ #main .sidebar {
-    background: #7a2d14 !important;                 /* ← 侧栏背景 */
-    color: #ffffff !important;
-  }
-  .masthead--inner ~ #main .sidebar a { color: #ffffff !important; }
-  .masthead--inner ~ #main .sidebar a:hover { color: #f2c8b0 !important; }
-  .masthead--inner ~ #main .sidebar .author__avatar { background: transparent !important; }
-  .masthead--inner ~ #main { padding-top: .6rem; }
+      /* 主体为侧栏让路 */
+      .masthead--inner ~ #main .archive,
+      .masthead--inner ~ #main .page,
+      .masthead--inner ~ #main .page__content,
+      .masthead--inner ~ #main .initial-content{
+        margin-left: 320px !important; /* 侧栏宽度300 + 20间距 */
+      }
 
-  /* 桌面端：给粘性侧栏留出避让高度，必要时把 72 调成 76/84 试试 */
-  @media (min-width:801px){
-    .masthead--inner ~ #main .sidebar.sticky { top: 72px !important; }
-  }
-</style>
-{% endif %}
-
-{% endif %}
+      /* 桌面端：sticky 侧栏避让导航 */
+      @media (min-width:801px){
+        .masthead--inner ~ #main .sidebar.sticky{ top:72px !important; }
+      }
+      .masthead--inner ~ #main .page__title{ margin-top:.4rem !important; }
+    </style>
     {% endif %}
 
     <div class="masthead__menu">
@@ -67,9 +71,7 @@
           </li>
 
           {% for link in site.data.navigation.main %}
-            <li class="masthead__menu-item">
-              <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
-            </li>
+            <li class="masthead__menu-item"><a href="{{ link.url | relative_url }}">{{ link.title }}</a></li>
           {% endfor %}
 
           <li id="theme-toggle" class="masthead__menu-item persist tail">
@@ -78,7 +80,6 @@
             </a>
           </li>
         </ul>
-
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
