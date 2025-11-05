@@ -307,3 +307,37 @@ body {
 }
 .layout--archive #main,
 .layout--single  #main { padding-top: 0.6rem; }
+/* === 顶部导航整条背景：强覆盖版 === */
+.masthead,
+.masthead__inner-wrap {
+  background-color: #7a2d14 !important;  /* 你的目标红棕色 */
+  border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+  box-shadow: none !important;
+}
+
+/* 导航里的文字/图标变白 */
+.masthead a,
+.masthead .site-title,
+.greedy-nav a,
+#theme-toggle i {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+/* === 内页左侧栏背景 === */
+.sidebar {
+  background-color: #7a2d14 !important;  /* 与导航一致 */
+  color: #ffffff !important;              /* 文字颜色改白 */
+}
+
+/* 侧栏内链接字体改白/浅色 */
+.sidebar a {
+  color: #ffffff !important;
+}
+.sidebar a:hover {
+  color: #f2c8b0 !important;  /* 鼠标悬停时可加一点浅橙光感 */
+}
+
+/* 头像区域背景透明，让红棕色露出来 */
+.sidebar .author__avatar {
+  background: transparent !important;
+}
