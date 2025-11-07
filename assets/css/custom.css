@@ -1,6 +1,5 @@
 /* =========================================================
    🎨 全局颜色与样式变量
-   修改这里的 --brand 会影响按钮 hover 边框等辅助元素
    ========================================================= */
 :root {
   --brand: #85a428;        /* 主色，用于 hover 边框或强调 */
@@ -9,6 +8,11 @@
   --muted: #575757;        /* 次要文字颜色 */
   --radius: 14px;          /* 圆角大小 */
   --shadow: 0 8px 18px rgba(0,0,0,.06); /* 阴影样式 */
+
+  /* ==== 新增内页配色变量 ==== */
+  --page-bg: #eaf6e2;      /* 内页背景：淡绿色 */
+  --nav-text: #2e5b23;     /* 顶部导航文字：深绿色 */
+  --sidebar-text: #555555; /* 左侧栏文字：灰色 */
 }
 
 /* =========================================================
@@ -33,46 +37,29 @@ body {
   z-index: 2;
 }
 
-/* 全屏气泡画布（铺满整个页面，位于底层） */
+/* 全屏气泡画布 */
 #dots-bg{
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  opacity: .45;   /* 气泡整体透明度，可调 0~1 */
+  opacity: .45;
   z-index: 0;
 }
-
-/* 让主要内容在气泡之上显示 */
-.masthead,
-.page__footer,
-.page,
-.page__inner-wrap,
-.hero-landing,
-.hero-inner {
-  position: relative;
-  z-index: 2;
-}
-
 
 /* =========================================================
    🏠 首页主体布局
    ========================================================= */
 .hero-landing {
-  min-height: 88vh;          /* 基本满屏高度 */
+  min-height: 88vh;
   display: grid;
-  place-items: center;       /* 水平+垂直居中 */
+  place-items: center;
   padding: 7rem 1.25rem 5rem;
-  background: transparent;   /* 背景透明，让气泡可见 */
+  background: transparent;
   overflow: hidden;
 }
-
-.hero-inner {
-  max-width: 980px;
-  margin: 0 auto;
-  text-align: center;
-}
+.hero-inner { max-width: 980px; margin: 0 auto; text-align: center; }
 
 /* 标题与说明 */
 .hero-landing h1 {
@@ -82,7 +69,6 @@ body {
   font-weight: 800;
   color: var(--ink);
 }
-
 .hero-lead {
   font-size: clamp(1.05rem, 1.2vw, 1.25rem);
   color: var(--muted);
@@ -100,7 +86,6 @@ body {
   justify-content: center;
   margin: 1rem 0 2.2rem;
 }
-
 .pill {
   display: inline-block;
   padding: .48rem .85rem;
@@ -113,7 +98,7 @@ body {
 }
 
 /* =========================================================
-   🔘 三个主按钮（Publications / CV / Projects）
+   🔘 三个主按钮
    ========================================================= */
 .hero-cta {
   display: flex;
@@ -121,7 +106,6 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -134,33 +118,16 @@ body {
   transition: transform .06s ease, box-shadow .2s ease, opacity .2s ease;
   box-shadow: none;
 }
-
-/* 鼠标悬停时的浮起效果 */
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow);
-}
-
-/* 1️⃣ Publications 按钮：蓝色 */
-.hero-cta a:nth-child(1) {
-  background: #912c0d;
-  color: white;
-}
-
-/* 2️⃣ View CV 按钮：灰色 */
-.hero-cta a:nth-child(2) {
-  background: #912c0d;
-  color: white;
-}
-
-/* 3️⃣ Projects 按钮：橙色 */
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.hero-cta a:nth-child(1),
+.hero-cta a:nth-child(2),
 .hero-cta a:nth-child(3) {
   background: #912c0d;
   color: white;
 }
 
 /* =========================================================
-   📱 响应式：移动端按钮全宽
+   📱 响应式
    ========================================================= */
 @media (max-width: 640px) {
   .hero-landing { padding: 5.5rem 1rem 4rem; }
@@ -170,62 +137,26 @@ body {
 /* =========================================================
    ⚙️ Minimal Mistakes 兼容微调
    ========================================================= */
-.page .page__inner-wrap > *:first-child {
-  margin-top: 0;
-}
-/* =======================
-   内页导航栏压缩 + 侧栏避让
-   作用范围：Minimal Mistakes 的 archive/single 布局
-   ======================= */
+.page .page__inner-wrap > *:first-child { margin-top: 0; }
 
-/* 1) 压缩内页顶部 masthead 的上下内边距，降低整体高度 */
+/* ===== 导航压缩与侧栏避让 ===== */
 .layout--archive .masthead,
-.layout--single  .masthead {
-  padding-top: 0.35rem;
-  padding-bottom: 0.35rem;
-}
-
-/* 2) 收紧菜单项左右间距，避免一行过宽 */
+.layout--single  .masthead { padding-top: 0.35rem; padding-bottom: 0.35rem; }
 .layout--archive .greedy-nav .visible-links > li,
-.layout--single  .greedy-nav .visible-links > li {
-  margin: 0 0.45rem;               /* 原来一般 ~0.8rem，这里缩小到 0.45rem */
-}
-
-/* 3) 收紧链接文字的水平内边距，进一步节省宽度 */
+.layout--single  .greedy-nav .visible-links > li { margin: 0 0.45rem; }
 .layout--archive .greedy-nav a,
-.layout--single  .greedy-nav a {
-  padding: 0.35rem 0.35rem;         /* 原来更宽，这里略收紧 */
-  line-height: 1.2;
-}
-
-/* 4) 稍微降低站点标题字号，给菜单留更多空间 */
+.layout--single  .greedy-nav a { padding: 0.35rem 0.35rem; line-height: 1.2; }
 .layout--archive .masthead__menu-item--lg a.site-title,
-.layout--single  .masthead__menu-item--lg a.site-title {
-  font-size: 1.0rem;
-}
-
-/* 5) 侧栏（含头像）是 sticky：加一个与 masthead 高度匹配的 top，避免被压住
-   可根据你实际导航高度微调 68px 这个数值 */
-@media (min-width: 801px) { /* 只在桌面端生效 */
+.layout--single  .masthead__menu-item--lg a.site-title { font-size: 1rem; }
+@media (min-width: 801px) {
   .layout--archive .sidebar.sticky,
-  .layout--single  .sidebar.sticky {
-    top: 68px;                       /* 导航高度 + 一点安全边距 */
-  }
+  .layout--single  .sidebar.sticky { top: 68px; }
 }
-
-/* 6) 内页主体与导航之间加一点上内边距，进一步避免重叠 */
 .layout--archive #main,
-.layout--single  #main {
-  padding-top: 0.5rem;
-}
+.layout--single  #main { padding-top: 0.5rem; }
 
-/* 7) 如果你的导航右侧有主题切换/图标，把它也收紧一点（可选） */
-.layout--archive #theme-toggle a,
-.layout--single  #theme-toggle a {
-  padding: 0.25rem 0.35rem;
-}
 /* =========================================================
-   (A) 全站字体（正文用 Inter/系统，主标题用 Poppins/系统）
+   (A) 字体
    ========================================================= */
 body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
@@ -237,35 +168,31 @@ body {
 }
 
 /* =========================================================
-   (B) 首页标签：浅粉色、无边框、无底色
+   (B) 首页标签样式
    ========================================================= */
 .pill {
-  background: transparent !important;   /* 去底色 */
-  border: none !important;              /* 去边框 */
-  color: #c4e283 !important;            /* 浅粉色（你可换成自己喜欢的粉） */
+  background: transparent !important;
+  border: none !important;
+  color: #c4e283 !important;
   font-weight: 400;
   box-shadow: none !important;
 }
 
-/* ====== 内页导航配色：背景 & 文字（强覆盖版） ====== */
-/* 配色变量：改这两行就换色 */
-:root {
-  --nav-bg: #7a2d14;   /* 内页导航背景：换成你想要的颜色 */
-  --nav-ink: #ffffff;  /* 内页导航文字/图标颜色 */
-  --nav-divider: rgba(255,255,255,0.18);
+/* =========================================================
+   🌿 新增：内页背景与导航栏配色
+   ========================================================= */
+
+/* 1️⃣ 内页整体背景 */
+.layout--archive,
+.layout--single,
+.layout--archive body,
+.layout--single body,
+.layout--archive #main,
+.layout--single #main {
+  background: var(--page-bg) !important;   /* 淡绿色背景 */
 }
 
-/* 覆盖内页（archive/single）导航背景 —— 同时改外层和 inner-wrap */
-.layout--archive .masthead,
-.layout--single  .masthead,
-.layout--archive .masthead .masthead__inner-wrap,
-.layout--single  .masthead .masthead__inner-wrap {
-  background: var(--nav-bg) !important;
-  border-bottom: 1px solid var(--nav-divider) !important;
-  box-shadow: none !important;
-}
-
-/* 导航里的所有链接/标题/图标统一成浅色（含暗色主题） */
+/* 2️⃣ 顶部导航文字颜色（深绿色） */
 .layout--archive .masthead a,
 .layout--single  .masthead a,
 .layout--archive .masthead .site-title,
@@ -274,36 +201,25 @@ body {
 .layout--single  .greedy-nav a,
 .layout--archive #theme-toggle i,
 .layout--single  #theme-toggle i {
-  color: var(--nav-ink) !important;
-  fill: var(--nav-ink) !important;
+  color: var(--nav-text) !important;
+  fill:  var(--nav-text) !important;
+  background: transparent !important;  /* 去掉白底 */
+  border: none !important;
 }
 
-/* 悬停轻微变亮（可选） */
-.layout--archive .greedy-nav a:hover,
-.layout--single  .greedy-nav a:hover {
-  opacity: 0.9;
+/* 3️⃣ 左侧侧栏文字颜色（灰色） */
+.layout--archive .sidebar,
+.layout--single  .sidebar {
+  background: var(--page-bg) !important;
+  color: var(--sidebar-text) !important;
+}
+.layout--archive .sidebar a,
+.layout--single  .sidebar a {
+  color: var(--sidebar-text) !important;
+}
+.layout--archive .sidebar a:hover,
+.layout--single  .sidebar a:hover {
+  opacity: .85;
 }
 
-/* 压缩内页导航高度 + 避免与头像重叠（和之前的间距方案合并） */
-.layout--archive .masthead,
-.layout--single  .masthead {
-  padding-top: 0.35rem !important;
-  padding-bottom: 0.35rem !important;
-}
-.layout--archive .greedy-nav .visible-links > li,
-.layout--single  .greedy-nav .visible-links > li {
-  margin: 0 0.45rem;
-}
-.layout--archive .greedy-nav a,
-.layout--single  .greedy-nav a {
-  padding: 0.35rem 0.35rem;
-  line-height: 1.2;
-}
-@media (min-width: 801px) {
-  .layout--archive .sidebar.sticky,
-  .layout--single  .sidebar.sticky {
-    top: 72px;  /* 如果仍有轻微重叠，把 72 调成 76/84 试试 */
-  }
-}
-.layout--archive #main,
-.layout--single  #main { padding-top: 0.6rem; }
+/* 保持其它结构不变 */
