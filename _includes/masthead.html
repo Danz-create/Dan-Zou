@@ -10,73 +10,89 @@
     {% if page.url != '/' %}
 {% if page.url != '/' %}
 {% if page.url != '/' %}
+{% if page.url != '/' %}
 <style>
-  /* ===== 基础配色 ===== */
+  /* ================= 统一配色 ================= */
   :root{
-    --pink-bg: #FBE8EE;   /* 浅粉：整页统一底色 */
-    --nav-ink: #5A2A17;   /* 顶部导航文字（深棕） */
-    --text-ink: #444444;  /* 侧栏与正文文字（深灰） */
+    --pink-bg: #FBE8EE;   /* 浅粉：页面统一底色 */
+    --nav-ink: #5A2A17;   /* 顶部导航文字深棕 */
+    --text-ink: #444444;  /* 侧栏/正文文字深灰 */
   }
 
-  /* 整页浅粉 */
-  body{ background: var(--pink-bg) !important; }
+  /* 1) 整页背景：确保滚动到底也保持浅粉 */
+  html, body { background: var(--pink-bg) !important; }
+  #main, .initial-content, .page, .archive, .page__inner-wrap, .page__content {
+    background: transparent !important;
+    color: var(--text-ink) !important;
+  }
 
-  /* 顶部导航：与页面同色背景，文字深棕 */
+  /* 2) 顶部导航：浅粉底 + 深棕字；去掉链接白底/白框 */
   .masthead--inner,
   .masthead--inner .masthead__inner-wrap,
-  .masthead--inner .greedy-nav{
+  .masthead--inner .greedy-nav {
     background: var(--pink-bg) !important;
     border: none !important;
     box-shadow: none !important;
   }
   .masthead--inner .site-title,
   .masthead--inner .greedy-nav a,
-  .masthead--inner #theme-toggle i{
+  .masthead--inner #theme-toggle i {
     color: var(--nav-ink) !important;
     fill:  var(--nav-ink) !important;
   }
-  .masthead--inner .greedy-nav a:hover{ opacity:.85; }
+  /* 关键：把导航项的白底/白圆角/阴影全部清掉 */
+  .masthead--inner .greedy-nav a {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+  .masthead--inner .greedy-nav a:hover { opacity:.85; }
 
-  /* 导航间距适度收紧，避免压到头像 */
+  /* 导航间距适度收紧 */
   .masthead--inner{ padding:.4rem 0 !important; }
   .masthead--inner .greedy-nav .visible-links>li{ margin:0 .5rem !important; }
   .masthead--inner .greedy-nav a{ padding:.35rem .4rem !important; line-height:1.2 !important; font-size:1rem !important; }
 
-  /* 让容器更贴屏幕边缘（去掉两侧大空隙） */
-  .masthead--inner .masthead__inner-wrap{ padding-left:12px !important; padding-right:12px !important; }
-  .masthead--inner ~ #main .page__inner-wrap{ padding-left:12px !important; padding-right:12px !important; }
+  /* 3) 让容器真正贴屏幕边缘（去掉主题默认左右 padding） */
+  .masthead--inner .masthead__inner-wrap{ padding-left: 0 !important; padding-right: 12px !important; }
+  .masthead--inner ~ #main .page__inner-wrap{ padding-left: 0 !important; padding-right: 12px !important; }
 
-  /* 侧边栏贴最左 + 与页面同色 + 文字深灰 */
+  /* 4) 侧边栏贴最左、同为浅粉、文字深灰 */
   .masthead--inner ~ #main .sidebar{
     background: var(--pink-bg) !important;
     color: var(--text-ink) !important;
-    width: 300px !important;            /* 想更宽可改 320/340 */
+    width: 300px !important;                /* 想更宽：320/340 */
     padding: 1.2rem 1.4rem !important;
-    margin-left: 0 !important;          /* 贴到最左 */
+    margin-left: 0 !important;              /* 贴到容器最左 */
     border: none !important;
     box-shadow: none !important;
+    transform: translateX(0) !important;    /* 防止旧版负边距的影响 */
   }
+  /* 如果仍看到左边还差一点点，可把 margin-left 设为负值微调：
+     .masthead--inner ~ #main .sidebar { margin-left: -8px !important; } */
+
   .masthead--inner ~ #main .sidebar a{ color: var(--text-ink) !important; }
   .masthead--inner ~ #main .sidebar a:hover{ opacity:.85; }
   .masthead--inner ~ #main .sidebar .author__avatar{ background:transparent !important; }
   .masthead--inner ~ #main .sidebar .author__avatar img{ border-radius:50%; width:120px !important; height:120px !important; }
 
-  /* 主体为侧栏让路（= 侧栏宽度 + 24 的余量） */
+  /* 5) 主体为侧栏让路（= 侧栏宽度 + 24 余量） */
   .masthead--inner ~ #main .archive,
   .masthead--inner ~ #main .page,
   .masthead--inner ~ #main .page__content,
   .masthead--inner ~ #main .initial-content{
-    margin-left: 324px !important;      /* 如果把侧栏宽度改了，这里同步：宽度+24 */
-    background: transparent !important; /* 让正文区也露出浅粉 */
-    color: var(--text-ink) !important;
+    margin-left: 324px !important;
   }
 
-  /* 粘性侧栏避让导航 */
+  /* 6) 粘性侧栏避让导航 */
   @media (min-width:801px){
     .masthead--inner ~ #main .sidebar.sticky{ top:72px !important; }
   }
   .masthead--inner ~ #main .page__title{ margin-top:.4rem !important; }
 </style>
+{% endif %}
+
 {% endif %}
 
 {% endif %}
