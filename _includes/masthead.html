@@ -9,104 +9,76 @@
 
     {% if page.url != '/' %}
 {% if page.url != '/' %}
+{% if page.url != '/' %}
 <style>
-  /* ========== 内页：导航整条背景 + 文字可见（强覆盖） ========== */
+  /* ===== 基础配色 ===== */
+  :root{
+    --pink-bg: #FBE8EE;   /* 浅粉：整页统一底色 */
+    --nav-ink: #5A2A17;   /* 顶部导航文字（深棕） */
+    --text-ink: #444444;  /* 侧栏与正文文字（深灰） */
+  }
+
+  /* 整页浅粉 */
+  body{ background: var(--pink-bg) !important; }
+
+  /* 顶部导航：与页面同色背景，文字深棕 */
   .masthead--inner,
   .masthead--inner .masthead__inner-wrap,
-  .masthead--inner .greedy-nav {
-    background: #7a2d14 !important;  /* ← 导航背景（红棕） */
+  .masthead--inner .greedy-nav{
+    background: var(--pink-bg) !important;
     border: none !important;
     box-shadow: none !important;
   }
-
-  /* 导航里的所有链接/标题/图标白色 */
   .masthead--inner .site-title,
   .masthead--inner .greedy-nav a,
-  .masthead--inner .greedy-nav a:link,
-  .masthead--inner .greedy-nav a:visited,
-  .masthead--inner .greedy-nav a:active,
-  .masthead--inner #theme-toggle i {
-    color: #ffffff !important;
-    fill: #ffffff !important;
+  .masthead--inner #theme-toggle i{
+    color: var(--nav-ink) !important;
+    fill:  var(--nav-ink) !important;
   }
-  .masthead--inner .greedy-nav a:hover { color: #ffe3c4 !important; }
+  .masthead--inner .greedy-nav a:hover{ opacity:.85; }
 
-  /* 收紧导航高度与间距 */
-  .masthead--inner .greedy-nav .visible-links > li {
-    margin: 0 .5rem !important;
-  }
-  .masthead--inner .greedy-nav a {
-    padding: .35rem .4rem !important;
-    line-height: 1.2 !important;
-    font-size: 1rem !important;
-  }
-  .masthead--inner {
-    padding-top: .4rem !important;
-    padding-bottom: .4rem !important;
-  }
+  /* 导航间距适度收紧，避免压到头像 */
+  .masthead--inner{ padding:.4rem 0 !important; }
+  .masthead--inner .greedy-nav .visible-links>li{ margin:0 .5rem !important; }
+  .masthead--inner .greedy-nav a{ padding:.35rem .4rem !important; line-height:1.2 !important; font-size:1rem !important; }
 
-  /* ========== 左侧栏：背景同色 + 加宽 + 文字放大 ========== */
-  .masthead--inner ~ #main .sidebar {
-    background: #7a2d14 !important;   /* ← 侧栏背景 */
-    color: #ffffff !important;
-    width: 300px !important;          /* ← 左栏宽度，可调 320px */
-    font-size: 1rem !important;
-    line-height: 1.6 !important;
+  /* 让容器更贴屏幕边缘（去掉两侧大空隙） */
+  .masthead--inner .masthead__inner-wrap{ padding-left:12px !important; padding-right:12px !important; }
+  .masthead--inner ~ #main .page__inner-wrap{ padding-left:12px !important; padding-right:12px !important; }
+
+  /* 侧边栏贴最左 + 与页面同色 + 文字深灰 */
+  .masthead--inner ~ #main .sidebar{
+    background: var(--pink-bg) !important;
+    color: var(--text-ink) !important;
+    width: 300px !important;            /* 想更宽可改 320/340 */
     padding: 1.2rem 1.4rem !important;
+    margin-left: 0 !important;          /* 贴到最左 */
+    border: none !important;
+    box-shadow: none !important;
   }
-  .masthead--inner ~ #main .sidebar a {
-    color: #ffffff !important;
-  }
-  .masthead--inner ~ #main .sidebar a:hover {
-    color: #f2c8b0 !important;
-  }
-  .masthead--inner ~ #main .sidebar .author__avatar {
-    background: transparent !important;
-  }
-  .masthead--inner ~ #main .sidebar .author__avatar img {
-    border-radius: 50%;
-    width: 120px !important;
-    height: 120px !important;
-  }
+  .masthead--inner ~ #main .sidebar a{ color: var(--text-ink) !important; }
+  .masthead--inner ~ #main .sidebar a:hover{ opacity:.85; }
+  .masthead--inner ~ #main .sidebar .author__avatar{ background:transparent !important; }
+  .masthead--inner ~ #main .sidebar .author__avatar img{ border-radius:50%; width:120px !important; height:120px !important; }
 
-  /* 主体区域右移，为侧栏让路 */
+  /* 主体为侧栏让路（= 侧栏宽度 + 24 的余量） */
   .masthead--inner ~ #main .archive,
   .masthead--inner ~ #main .page,
   .masthead--inner ~ #main .page__content,
-  .masthead--inner ~ #main .initial-content {
-    margin-left: 320px !important;  /* 侧栏宽度(300) + 20 */
+  .masthead--inner ~ #main .initial-content{
+    margin-left: 324px !important;      /* 如果把侧栏宽度改了，这里同步：宽度+24 */
+    background: transparent !important; /* 让正文区也露出浅粉 */
+    color: var(--text-ink) !important;
   }
 
-  /* 桌面端：sticky 侧栏避让导航 */
-  @media (min-width: 801px) {
-    .masthead--inner ~ #main .sidebar.sticky {
-      top: 72px !important;
-    }
+  /* 粘性侧栏避让导航 */
+  @media (min-width:801px){
+    .masthead--inner ~ #main .sidebar.sticky{ top:72px !important; }
   }
-
-  /* 内页标题间距 */
-  .masthead--inner ~ #main .page__title {
-    margin-top: .4rem !important;
-  }
-
-  /* ========== 收紧页面左右空隙（关键部分） ========== */
-  /* ① 顶部导航容器左右边距 */
-  .masthead--inner .masthead__inner-wrap {
-    padding-left: 12px !important;   /* ← 调小这里减小顶栏左空隙 */
-    padding-right: 12px !important;
-  }
-
-  /* ② 主体容器左右边距 */
-  .masthead--inner ~ #main .page__inner-wrap {
-    padding-left: 12px !important;   /* ← 控制侧栏离屏幕边缘的空隙 */
-    padding-right: 12px !important;
-  }
-
-  /* ③ 让侧栏整体更贴左边（可选） */
-  .masthead--inner ~ #main .sidebar {
-    margin-left: -4px !important;    /* ← 想更贴边可设 -6 或 0；想安全留白改 0 */
-  }
+  .masthead--inner ~ #main .page__title{ margin-top:.4rem !important; }
 </style>
+{% endif %}
+
 {% endif %}
 
     {% endif %}
