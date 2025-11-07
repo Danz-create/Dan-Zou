@@ -11,86 +11,46 @@
 {% if page.url != '/' %}
 {% if page.url != '/' %}
 {% if page.url != '/' %}
+{% if page.url != '/' %}
 <style>
-  /* ================= 统一配色 ================= */
-  :root{
-    --pink-bg: #FBE8EE;   /* 浅粉：页面统一底色 */
-    --nav-ink: #5A2A17;   /* 顶部导航文字深棕 */
-    --text-ink: #444444;  /* 侧栏/正文文字深灰 */
-  }
-
-  /* 1) 整页背景：确保滚动到底也保持浅粉 */
-  html, body { background: var(--pink-bg) !important; }
-  #main, .initial-content, .page, .archive, .page__inner-wrap, .page__content {
-    background: transparent !important;
-    color: var(--text-ink) !important;
-  }
-
-  /* 2) 顶部导航：浅粉底 + 深棕字；去掉链接白底/白框 */
+  /* ==== 导航整条改为红棕色（包含内层与 nav 容器） ==== */
   .masthead--inner,
   .masthead--inner .masthead__inner-wrap,
   .masthead--inner .greedy-nav {
-    background: var(--pink-bg) !important;
-    border: none !important;
+    background: #7a2d14 !important;                 /* ← 导航背景色 */
+    border-bottom: 1px solid rgba(255,255,255,.18) !important;
     box-shadow: none !important;
   }
+
+  /* 导航里的文字/图标全部白色 */
+  .masthead--inner a,
   .masthead--inner .site-title,
-  .masthead--inner .greedy-nav a,
   .masthead--inner #theme-toggle i {
-    color: var(--nav-ink) !important;
-    fill:  var(--nav-ink) !important;
-  }
-  /* 关键：把导航项的白底/白圆角/阴影全部清掉 */
-  .masthead--inner .greedy-nav a {
-    background: transparent !important;
-    box-shadow: none !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-  }
-  .masthead--inner .greedy-nav a:hover { opacity:.85; }
-
-  /* 导航间距适度收紧 */
-  .masthead--inner{ padding:.4rem 0 !important; }
-  .masthead--inner .greedy-nav .visible-links>li{ margin:0 .5rem !important; }
-  .masthead--inner .greedy-nav a{ padding:.35rem .4rem !important; line-height:1.2 !important; font-size:1rem !important; }
-
-  /* 3) 让容器真正贴屏幕边缘（去掉主题默认左右 padding） */
-  .masthead--inner .masthead__inner-wrap{ padding-left: 0 !important; padding-right: 12px !important; }
-  .masthead--inner ~ #main .page__inner-wrap{ padding-left: 0 !important; padding-right: 12px !important; }
-
-  /* 4) 侧边栏贴最左、同为浅粉、文字深灰 */
-  .masthead--inner ~ #main .sidebar{
-    background: var(--pink-bg) !important;
-    color: var(--text-ink) !important;
-    width: 300px !important;                /* 想更宽：320/340 */
-    padding: 0rem 1.2rem !important;
-    margin-left: 0 !important;              /* 贴到容器最左 */
-    border: none !important;
-    box-shadow: none !important;
-    transform: translateX(0) !important;    /* 防止旧版负边距的影响 */
-  }
-  /* 如果仍看到左边还差一点点，可把 margin-left 设为负值微调：
-     .masthead--inner ~ #main .sidebar { margin-left: -8px !important; } */
-
-  .masthead--inner ~ #main .sidebar a{ color: var(--text-ink) !important; }
-  .masthead--inner ~ #main .sidebar a:hover{ opacity:.85; }
-  .masthead--inner ~ #main .sidebar .author__avatar{ background:transparent !important; }
-  .masthead--inner ~ #main .sidebar .author__avatar img{ border-radius:50%; width:120px !important; height:120px !important; }
-
-  /* 5) 主体为侧栏让路（= 侧栏宽度 + 24 余量） */
-  .masthead--inner ~ #main .archive,
-  .masthead--inner ~ #main .page,
-  .masthead--inner ~ #main .page__content,
-  .masthead--inner ~ #main .initial-content{
-    margin-left: 324px !important;
+    color: #ffffff !important;
+    fill: #ffffff !important;
   }
 
-  /* 6) 粘性侧栏避让导航 */
+  /* 收紧导航高度与间距，避免与头像重叠 */
+  .masthead--inner .greedy-nav .visible-links > li { margin: 0 .45rem !important; }
+  .masthead--inner .greedy-nav a { padding: .35rem .35rem !important; line-height: 1.2 !important; }
+
+  /* ==== 左侧栏（含头像区）改为红棕色，文字白色 ==== */
+  .masthead--inner ~ #main .sidebar {
+    background: #7a2d14 !important;                 /* ← 侧栏背景 */
+    color: #ffffff !important;
+  }
+  .masthead--inner ~ #main .sidebar a { color: #ffffff !important; }
+  .masthead--inner ~ #main .sidebar a:hover { color: #f2c8b0 !important; }
+  .masthead--inner ~ #main .sidebar .author__avatar { background: transparent !important; }
+  .masthead--inner ~ #main { padding-top: .6rem; }
+
+  /* 桌面端：给粘性侧栏留出避让高度，必要时把 72 调成 76/84 试试 */
   @media (min-width:801px){
-    .masthead--inner ~ #main .sidebar.sticky{ top:72px !important; }
+    .masthead--inner ~ #main .sidebar.sticky { top: 72px !important; }
   }
-  .masthead--inner ~ #main .page__title{ margin-top:.4rem !important; }
 </style>
+{% endif %}
+
 {% endif %}
 
 {% endif %}
