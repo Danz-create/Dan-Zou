@@ -12,43 +12,56 @@
 {% if page.url != '/' %}
 {% if page.url != '/' %}
 {% if page.url != '/' %}
+{% if page.url != '/' %}
 <style>
-  /* ==== 导航整条改为红棕色（包含内层与 nav 容器） ==== */
+  /* ===== 颜色变量（可按需改） ===== */
+  :root{
+    --page-bg:   #eaf6e2;  /* 内页淡绿背景 */
+    --nav-text:  #2e5b23;  /* 顶部导航文字深绿 */
+    --side-text: #555555;  /* 左侧栏文字灰色  */
+  }
+
+  /* 1) 内页整页都淡绿（滚动到底也保持） */
+  html, body { background: var(--page-bg) !important; }
   .masthead--inner,
+  .masthead--inner ~ #main,
+  .masthead--inner ~ #main .page__inner-wrap,
+  .masthead--inner ~ #main .archive,
+  .masthead--inner ~ #main .page,
+  .masthead--inner ~ #main .page__content,
+  .masthead--inner ~ #main .initial-content {
+    background: var(--page-bg) !important;
+  }
+
+  /* 2) 顶部导航：背景同为淡绿；文字深绿；去掉任何白底/边框/阴影 */
   .masthead--inner .masthead__inner-wrap,
   .masthead--inner .greedy-nav {
-    background: #7a2d14 !important;                 /* ← 导航背景色 */
-    border-bottom: 1px solid rgba(255,255,255,.18) !important;
+    background: var(--page-bg) !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .masthead--inner .site-title,
+  .masthead--inner .greedy-nav a,
+  .masthead--inner #theme-toggle i {
+    color: var(--nav-text) !important;
+    fill:  var(--nav-text) !important;
+    background: transparent !important;
+    border: 0 !important;
     box-shadow: none !important;
   }
 
-  /* 导航里的文字/图标全部白色 */
-  .masthead--inner a,
-  .masthead--inner .site-title,
-  .masthead--inner #theme-toggle i {
-    color: #ffffff !important;
-    fill: #ffffff !important;
+  /* 3) 左侧栏：背景同为淡绿；文字灰色 */
+  .masthead--inner ~ #main .sidebar{
+    background: var(--page-bg) !important;
+    color: var(--side-text) !important;
   }
-
-  /* 收紧导航高度与间距，避免与头像重叠 */
-  .masthead--inner .greedy-nav .visible-links > li { margin: 0 .45rem !important; }
-  .masthead--inner .greedy-nav a { padding: .35rem .35rem !important; line-height: 1.2 !important; }
-
-  /* ==== 左侧栏（含头像区）改为红棕色，文字白色 ==== */
-  .masthead--inner ~ #main .sidebar {
-    background: #7a2d14 !important;                 /* ← 侧栏背景 */
-    color: #ffffff !important;
+  .masthead--inner ~ #main .sidebar a{
+    color: var(--side-text) !important;
   }
-  .masthead--inner ~ #main .sidebar a { color: #ffffff !important; }
-  .masthead--inner ~ #main .sidebar a:hover { color: #f2c8b0 !important; }
-  .masthead--inner ~ #main .sidebar .author__avatar { background: transparent !important; }
-  .masthead--inner ~ #main { padding-top: .6rem; }
-
-  /* 桌面端：给粘性侧栏留出避让高度，必要时把 72 调成 76/84 试试 */
-  @media (min-width:801px){
-    .masthead--inner ~ #main .sidebar.sticky { top: 72px !important; }
-  }
+  .masthead--inner ~ #main .sidebar a:hover{ opacity:.85; }
 </style>
+{% endif %}
+
 {% endif %}
 
 {% endif %}
