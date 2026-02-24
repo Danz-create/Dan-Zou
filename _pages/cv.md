@@ -9,56 +9,64 @@ redirect_from:
 
 {% include base_path %}
 
+<!-- Download link — upload your CV PDF to the files/ folder and uncomment:
+[📄 Download CV (PDF)](/files/cv.pdf)
+-->
+
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* **Ph.D.** in [Your Field], [Your University], [Year]
+* **M.S.** in [Your Field], [Your University], [Year]
+* **B.S.** in [Your Field], [Your University], [Year]
 
-Work experience
+Academic Positions
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* **Postdoctoral Researcher** — The University of Alabama, Tuscaloosa, AL *(current)*
+  * Research focus: GeoAI, urban health, and environmental resilience
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+Research Interests
+======
+* GeoAI & Spatial Machine Learning
+* Urban Health & Environmental Resilience
+* Remote Sensing & Earth Observation
+* Geographic Information Science
+* Environmental Justice & Spatial Inequality
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* **GeoAI & Machine Learning**
+  * Deep learning for geospatial data (CNNs, Transformers, Graph Neural Networks)
+  * Spatial machine learning and geostatistics
+* **GIS & Remote Sensing**
+  * ArcGIS Pro, QGIS
+  * Google Earth Engine
+  * Satellite image analysis
+* **Programming**
+  * Python (PyTorch, TensorFlow, GeoPandas, Rasterio, scikit-learn)
+  * R (sf, tidyverse, spatialreg)
+  * SQL
+* **Data & Visualization**
+  * Spatial data analysis and visualization
+  * Large-scale urban datasets
 
 Publications
 ======
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
+
 Talks
 ======
   <ul>{% for post in site.talks reversed %}
     {% include archive-single-talk-cv.html  %}
   {% endfor %}</ul>
-  
+
 Teaching
 ======
   <ul>{% for post in site.teaching reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Service and leadership
+
+Service & Leadership
 ======
-* Currently signed in to 43 different slack teams
+* [Add your reviewer, committee, and outreach activities here]
