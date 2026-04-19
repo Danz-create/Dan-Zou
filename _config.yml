@@ -48,14 +48,14 @@ author:
   linkedin         : # Username
   twitter          : # Username for X / Twitter
 
-# Publication Category - The following the list of publication categories and their headings
+# Publication Category - topic-based grouping (used by topic sub-pages)
 publication_category:
-  books:
-    title: 'Books'
-  manuscripts:
-    title: 'Journal Articles'    
-  conferences:
-    title: 'Conference Papers'
+  human-mobility:
+    title: 'Human Mobility'
+  disaster-resilience:
+    title: 'Disaster Resilience'
+  environmental-health:
+    title: 'Environmental Health'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews

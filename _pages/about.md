@@ -6,20 +6,18 @@ redirect_from:
   - /about.html
 ---
 
-I am a Postdoctoral Researcher at the [University of Alabama](https://www.ua.edu/), working at the intersection of **GeoAI**, **urban health**, and **environmental resilience**. My research leverages geospatial artificial intelligence and large-scale spatial data to understand how environmental and social conditions jointly shape urban health outcomes and community resilience.
+I am a Postdoctoral Researcher at [The University of Alabama](https://www.ua.edu/) (Dec. 2025 – Present), working with [Prof. Xinyue Ye](https://scholar.google.com/citations?user=Uy76pMcAAAAJ&hl=en).
 
-## Research Interests
+My research lies at the intersection of **GIScience** and **GeoAI**, with a focus on *spatial–temporal knowledge representation and integration* for applications in:
 
-- **GeoAI & Spatial Machine Learning** — applying deep learning and AI methods to geographic problems
-- **Urban Health & Resilience** — studying how cities and communities respond to environmental and social stressors
-- **Environmental Justice** — examining inequities in environmental exposure across populations
-- **Remote Sensing & Earth Observation** — using satellite imagery and sensor data for urban analytics
-- **Geographic Information Science (GIS)** — spatial analysis, modeling, and geovisualization
+- 🚶 **Human Mobility**
+- ⚡ **Disaster Resilience**
+- 🌱 **Environmental Health**
 
-## News
+I received my **Ph.D. in Human Geography** from [Sun Yat-sen University](https://www.sysu.edu.cn/) in 2025, supervised by [Prof. Suhong Zhou](https://scholar.google.com/citations?user=TTeo-2IAAAAJ&hl=zh-CN). My dissertation — *Geospatial differentiation, factors, and individual behavioral effects of virtual activity preferences among Guangzhou residents* — received the **Excellent Doctoral Dissertation Award** from the School of Geography and Planning.
 
-- 📍 Currently based at the University of Alabama, Tuscaloosa, AL
+During my PhD, I was a visiting student at the [Pierre Louis Institute of Epidemiology and Public Health](https://www.iplesp.upmc.fr/) in Paris (Dec. 2023 – Oct. 2024), working with **Dr. Basile Chaix**. Prior to that, I was a Research Assistant at [The Hong Kong Polytechnic University](https://www.polyu.edu.hk/) under **Assoc. Prof. Yang Xu**.
 
 ## Contact
 
-Feel free to reach out via email at [zdan.dec@gmail.com](mailto:zdan.dec@gmail.com) or through my academic profiles listed in the sidebar.
+Feel free to reach out via email at [zoud5@mail2.sysu.edu.cn](mailto:zoud5@mail2.sysu.edu.cn) or through my [Google Scholar](https://scholar.google.com/citations?hl=en&user=flyERAIAAAAJ).
