@@ -4,17 +4,12 @@ title: "Dan Zou"
 permalink: /
 ---
 
-<style>
-  /* 首页隐藏页脚，但保留顶部导航方便跳转 */
-  .page__footer { display: none !important; }
-</style>
-
 <section class="hero-landing">
   <div class="hero-inner">
-    <h1>🤗 Welcome to Dan's Portfolio</h1>
+    <h1><span style="margin-right:.4rem">🤗</span>Welcome to Dan's Portfolio</h1>
     <p class="hero-lead">
-      Dan Zou is a postdoctoral researcher using GeoAI to study urban health and resilience
-      across environmental and social dimensions.
+      Dan Zou is a postdoctoral researcher at <a href="https://www.ua.edu/">The University of Alabama</a>,
+      using GeoAI to study urban health and resilience across environmental and social dimensions.
     </p>
 
     <div class="hero-tags">
@@ -24,7 +19,7 @@ permalink: /
     </div>
 
     <div class="hero-cta">
-      <a class="btn btn-primary" href="{{ '/publications/' | relative_url }}">Publications</a>
+      <a class="btn btn-primary" href="{{ '/publications/' | relative_url }}">View Research →</a>
       <a class="btn btn-plain" href="{{ '/cv/' | relative_url }}">View CV</a>
       <a class="btn btn-plain" href="{{ '/portfolio/' | relative_url }}">Projects</a>
     </div>

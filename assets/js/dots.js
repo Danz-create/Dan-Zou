@@ -15,10 +15,10 @@
   var dots = [];
 
   /* ===== 参数可调（按需改动） ===== */
-  var COLOR = { r: 133, g: 164, b: 40 }; // #85a428
-  var R = 1.6;       // 每个气泡半径基准（更小更细腻）
-  var N = 110;       // 气泡数量
-  var SPEED = 0.25;  // 移动速度（越大越快）
+  var COLOR = { r: 0, g: 122, b: 255 }; // #007aff 苹果蓝
+  var R = 1.4;       // 每个气泡半径基准（更小更细腻）
+  var N = 90;        // 气泡数量
+  var SPEED = 0.22;  // 移动速度（越大越快）
 
   function rgba(a) { return 'rgba(' + COLOR.r + ',' + COLOR.g + ',' + COLOR.b + ',' + a + ')'; }
 

@@ -1,32 +1,40 @@
 /* =========================================================
-   🎨 全局颜色与样式变量
+   🎨 全局颜色与样式变量（Apple-blue 风格，仿 nehsgnail）
    ========================================================= */
 :root {
-  --brand: #85a428;        /* 主色，用于 hover 边框或强调 */
-  --brand-ink: #ffffff;    /* 文字在主色背景上的颜色 */
-  --ink: #111111;          /* 主文字颜色 */
-  --muted: #575757;        /* 次要文字颜色 */
-  --radius: 14px;          /* 圆角大小 */
-  --shadow: 0 8px 18px rgba(0,0,0,.06); /* 阴影样式 */
+  --brand:        #007aff;   /* 主色：苹果蓝 */
+  --brand-hover:  #0a84ff;   /* hover 更亮 */
+  --brand-ink:    #ffffff;   /* 主色按钮文字 */
+  --ink:          #1d1d1f;   /* 主文字 */
+  --muted:        #6e6e73;   /* 次要文字 */
+  --border:       #e5e7eb;   /* 边框 */
+  --page-bg:      #ffffff;   /* 页面背景 */
+  --hover-bg:     #f5f5f7;   /* hover 背景 */
+  --radius:       12px;
+  --radius-pill:  999px;
+  --shadow:       0 6px 20px rgba(0, 122, 255, 0.08);
+  --shadow-hover: 0 10px 28px rgba(0, 122, 255, 0.15);
 
-  /* ==== 新增内页配色变量 ==== */
-  --page-bg: #eaf6e2;      /* 内页背景：淡绿色 */
-  --nav-text: #2e5b23;     /* 顶部导航文字：深绿色 */
-  --sidebar-text: #555555; /* 左侧栏文字：灰色 */
+  --font-sans:    "Roboto", "Inter", system-ui, -apple-system, "Segoe UI",
+                  "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 /* =========================================================
-   📄 基础结构 & 全局设置
+   📄 基础结构 & 字体
    ========================================================= */
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
-  background: #ffffff;
+  background: var(--page-bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* 确保主要内容在气泡画布之上 */
+a { color: var(--brand); }
+a:hover { color: var(--brand-hover); text-decoration: underline; }
+
+/* 主要容器盖在背景之上 */
 .masthead,
 .page__footer,
 .page,
@@ -37,72 +45,124 @@ body {
   z-index: 2;
 }
 
-/* 全屏气泡画布 */
-#dots-bg{
+/* =========================================================
+   🌌 首页背景气泡（改成蓝色）
+   ========================================================= */
+#dots-bg {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  opacity: .45;
+  opacity: .35;
   z-index: 0;
 }
 
 /* =========================================================
-   🏠 首页主体布局
+   🧭 顶部导航（玻璃磨砂 + pill 按钮）
+   ========================================================= */
+.masthead {
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.masthead .site-title,
+.greedy-nav .site-title {
+  font-weight: 700;
+  color: var(--ink) !important;
+}
+
+.greedy-nav {
+  background: transparent !important;
+}
+
+.greedy-nav a {
+  color: var(--ink) !important;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem !important;
+  border-radius: var(--radius-pill);
+  transition: background .15s ease, color .15s ease;
+}
+
+.greedy-nav a:hover {
+  background: var(--hover-bg);
+  color: var(--brand) !important;
+  text-decoration: none;
+}
+
+/* =========================================================
+   🏠 首页 Hero
    ========================================================= */
 .hero-landing {
-  min-height: 88vh;
+  min-height: 82vh;
   display: grid;
   place-items: center;
-  padding: 7rem 1.25rem 5rem;
+  padding: 6rem 1.25rem 4rem;
   background: transparent;
   overflow: hidden;
 }
-.hero-inner { max-width: 980px; margin: 0 auto; text-align: center; }
-
-/* 标题与说明 */
-.hero-landing h1 {
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
-  line-height: 1.12;
-  margin: 0 0 1rem;
-  font-weight: 800;
-  color: var(--ink);
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
 }
+
+.hero-landing h1 {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
 .hero-lead {
-  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
   color: var(--muted);
-  max-width: 900px;
+  max-width: 640px;
   margin: 0 auto 1.4rem;
+  line-height: 1.65;
 }
 
 /* =========================================================
-   🔖 关键词标签
+   🔖 关键词 pill 标签（透明边框）
    ========================================================= */
 .hero-tags {
   display: flex;
-  gap: .6rem;
+  gap: .5rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 1rem 0 2.2rem;
+  margin: 1.2rem 0 2rem;
 }
 .pill {
   display: inline-block;
-  padding: .48rem .85rem;
-  border-radius: 999px;
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  font-size: .95rem;
+  padding: .38rem .9rem;
+  border-radius: var(--radius-pill);
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  font-size: .82rem;
+  font-weight: 500;
   line-height: 1;
-  color: #363636;
+  color: var(--muted) !important;
+  box-shadow: none !important;
+  transition: all .15s ease;
+}
+.pill:hover {
+  border-color: var(--brand) !important;
+  color: var(--brand) !important;
 }
 
 /* =========================================================
-   🔘 三个主按钮
+   🔘 CTA 按钮（主蓝 + 次白）
    ========================================================= */
 .hero-cta {
   display: flex;
-  gap: 1rem;
+  gap: .8rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -110,116 +170,141 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: .9rem 1.25rem;
-  border-radius: var(--radius);
-  font-weight: 800;
+  gap: .4rem;
+  padding: .78rem 1.6rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: .95rem;
   text-decoration: none !important;
-  border: 1px solid #e5e7eb;
-  transition: transform .06s ease, box-shadow .2s ease, opacity .2s ease;
-  box-shadow: none;
+  transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
 }
-.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
-.hero-cta a:nth-child(1),
+.btn:hover { transform: translateY(-1px); }
+
+/* 主按钮 Publications */
+.hero-cta a:nth-child(1) {
+  background: var(--brand) !important;
+  color: var(--brand-ink) !important;
+  border-color: var(--brand) !important;
+  box-shadow: var(--shadow);
+}
+.hero-cta a:nth-child(1):hover {
+  background: var(--brand-hover) !important;
+  box-shadow: var(--shadow-hover);
+}
+
+/* 次按钮 CV & Projects */
 .hero-cta a:nth-child(2),
 .hero-cta a:nth-child(3) {
-  background: #912c0d;
-  color: white;
+  background: #ffffff !important;
+  color: var(--ink) !important;
+  border-color: var(--border) !important;
+}
+.hero-cta a:nth-child(2):hover,
+.hero-cta a:nth-child(3):hover {
+  border-color: var(--brand) !important;
+  color: var(--brand) !important;
 }
 
 /* =========================================================
    📱 响应式
    ========================================================= */
 @media (max-width: 640px) {
-  .hero-landing { padding: 5.5rem 1rem 4rem; }
+  .hero-landing { padding: 4.5rem 1rem 3rem; }
   .btn { width: 100%; }
+  .hero-cta { flex-direction: column; width: 100%; }
 }
 
 /* =========================================================
-   ⚙️ Minimal Mistakes 兼容微调
+   📄 内页（Publications / Projects / CV / About...）
    ========================================================= */
+.page__title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
 .page .page__inner-wrap > *:first-child { margin-top: 0; }
 
-/* ===== 导航压缩与侧栏避让 ===== */
+/* 压缩导航间距 */
 .layout--archive .masthead,
-.layout--single  .masthead { padding-top: 0.35rem; padding-bottom: 0.35rem; }
-.layout--archive .greedy-nav .visible-links > li,
-.layout--single  .greedy-nav .visible-links > li { margin: 0 0.45rem; }
-.layout--archive .greedy-nav a,
-.layout--single  .greedy-nav a { padding: 0.35rem 0.35rem; line-height: 1.2; }
-.layout--archive .masthead__menu-item--lg a.site-title,
-.layout--single  .masthead__menu-item--lg a.site-title { font-size: 1rem; }
+.layout--single  .masthead {
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+.layout--archive #main,
+.layout--single  #main { padding-top: 1rem; }
+
+/* 侧栏 sticky 位置 */
 @media (min-width: 801px) {
   .layout--archive .sidebar.sticky,
-  .layout--single  .sidebar.sticky { top: 68px; }
-}
-.layout--archive #main,
-.layout--single  #main { padding-top: 0.5rem; }
-
-/* =========================================================
-   (A) 字体
-   ========================================================= */
-body {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-               Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-}
-.hero-landing h1,
-.page__title {
-  font-family: "Poppins", ui-sans-serif, "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  .layout--single  .sidebar.sticky { top: 72px; }
 }
 
 /* =========================================================
-   (B) 首页标签样式
+   👤 左侧作者卡片
    ========================================================= */
-.pill {
-  background: transparent !important;
-  border: none !important;
-  color: #c4e283 !important;
-  font-weight: 400;
-  box-shadow: none !important;
-}
-
-/* =========================================================
-   🌿 新增：内页背景与导航栏配色
-   ========================================================= */
-
-/* 1️⃣ 内页整体背景 */
-.layout--archive,
-.layout--single,
-.layout--archive body,
-.layout--single body,
-.layout--archive #main,
-.layout--single #main {
-  background: var(--page-bg) !important;   /* 淡绿色背景 */
-}
-
-/* 2️⃣ 顶部导航文字颜色（深绿色） */
-.layout--archive .masthead a,
-.layout--single  .masthead a,
-.layout--archive .masthead .site-title,
-.layout--single  .masthead .site-title,
-.layout--archive .greedy-nav a,
-.layout--single  .greedy-nav a,
-.layout--archive #theme-toggle i,
-.layout--single  #theme-toggle i {
-  color: var(--nav-text) !important;
-  fill:  var(--nav-text) !important;
-  background: transparent !important;  /* 去掉白底 */
-  border: none !important;
-}
-
-/* 3️⃣ 左侧侧栏文字颜色（灰色） */
 .layout--archive .sidebar,
 .layout--single  .sidebar {
-  background: var(--page-bg) !important;
-  color: var(--sidebar-text) !important;
-}
-.layout--archive .sidebar a,
-.layout--single  .sidebar a {
-  color: var(--sidebar-text) !important;
-}
-.layout--archive .sidebar a:hover,
-.layout--single  .sidebar a:hover {
-  opacity: .85;
+  background: transparent !important;
 }
 
-/* 保持其它结构不变 */
+.author__avatar img {
+  border-radius: 50%;
+  border: 3px solid var(--border);
+}
+
+.author__name {
+  font-weight: 700;
+  color: var(--ink);
+}
+.author__bio,
+.author__urls {
+  color: var(--muted);
+}
+.author__urls a {
+  color: var(--muted) !important;
+}
+.author__urls a:hover {
+  color: var(--brand) !important;
+}
+
+/* =========================================================
+   📰 Publications / Archive 列表
+   ========================================================= */
+.archive__item-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.archive__item-title a {
+  color: var(--ink);
+}
+.archive__item-title a:hover {
+  color: var(--brand);
+}
+.archive__subtitle {
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .4rem;
+  margin-top: 2rem;
+}
+
+/* =========================================================
+   🦶 Footer（极简）
+   ========================================================= */
+.page__footer {
+  background: var(--page-bg) !important;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+.page__footer a { color: var(--muted); }
+.page__footer a:hover { color: var(--brand); }
+
+/* 隐藏模板默认的 Minimal Mistakes 版权“Follow” 那一列的多余装饰 */
+.page__footer-follow,
+.page__footer-copyright {
+  font-size: .82rem;
+}
