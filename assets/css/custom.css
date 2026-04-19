@@ -34,8 +34,7 @@ body {
 a { color: var(--brand); }
 a:hover { color: var(--brand-hover); text-decoration: underline; }
 
-/* 主要容器盖在背景之上 */
-.masthead,
+/* 主要容器盖在背景之上 (注意: masthead 保留默认 fixed 定位, 否则滚动后会消失) */
 .page__footer,
 .page,
 .page__inner-wrap,
@@ -43,6 +42,12 @@ a:hover { color: var(--brand-hover); text-decoration: underline; }
 .hero-inner {
   position: relative;
   z-index: 2;
+}
+
+/* 内页内容腾出顶部空间, 避免被 fixed masthead 盖住 */
+.layout--archive #main,
+.layout--single  #main {
+  padding-top: 4.5rem;
 }
 
 /* =========================================================
@@ -234,8 +239,6 @@ a:hover { color: var(--brand-hover); text-decoration: underline; }
   padding-top: 0.45rem;
   padding-bottom: 0.45rem;
 }
-.layout--archive #main,
-.layout--single  #main { padding-top: 1rem; }
 
 /* 侧栏 sticky 位置 */
 @media (min-width: 801px) {
