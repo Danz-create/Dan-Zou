@@ -1,8 +1,14 @@
 # Main navigation links shown in the site header
 
 main:
+  - title: "About"
+    url: /about/
+
   - title: "Publications"
     url: /publications/
+
+  - title: "Projects"
+    url: /portfolio/
 
   - title: "Talks"
     url: /talks/

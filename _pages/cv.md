@@ -15,6 +15,7 @@ redirect_from:
 
 Education
 ======
+<!-- TODO: fill in actual years, fields, and institutions -->
 * **Ph.D.** in [Your Field], [Your University], [Year]
 * **M.S.** in [Your Field], [Your University], [Year]
 * **B.S.** in [Your Field], [Your University], [Year]
@@ -69,4 +70,6 @@ Teaching
 
 Service & Leadership
 ======
-* [Add your reviewer, committee, and outreach activities here]
+<!-- TODO: add reviewer service, committee work, outreach, etc. -->
+* *Reviewer* — [Journal / Conference Name]
+* *Committee* — [Role], [Organization]
