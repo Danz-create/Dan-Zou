@@ -446,51 +446,82 @@
 .archive__item-title a:hover { color: var(--brand); }
 
 /* =========================================================
-   👤 左侧栏 + 整体布局背景（左深右白，viewport 自适应）
+   👤 左侧栏 + 整体布局背景 — 用 CSS Grid 强制对齐
    ==========================================================
-   关键策略：body 线性渐变 + fixed attachment，
-   断点 = max(0, (vw-1280)/2) + 侧栏宽
-   这样左侧深色带精确覆盖到侧栏右边缘，
-   右侧白色带延伸到 viewport 边缘，
-   viewport 宽度任意变化都对齐。
+   策略：覆盖主题 Susy 浮动布局，用 CSS Grid 在 #main 上
+   分两列 [侧栏 280px | 内容 1fr]，保证侧栏右边缘 = 内容左边缘。
+   body::before 延伸深色到 viewport 左边缘，宽度公式与侧栏匹配。
    ========================================================= */
-html {
-  background: #ffffff !important;
-}
-body {
-  background: #ffffff !important;
-}
+html, body { background: #ffffff !important; }
 
-/* 大屏：侧栏出现在左侧时，启用左深右白分栏背景 */
+/* 只有存在侧栏的页面才启用分栏布局（首页 hero 不受影响）*/
 @media (min-width: 64em) {
+  #main:has(> .sidebar) {
+    display: grid !important;
+    grid-template-columns: 280px minmax(0, 1fr) !important;
+    gap: 0 !important;
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 覆盖 Susy 浮动 */
+  #main:has(> .sidebar) > .sidebar,
+  #main:has(> .sidebar) > .archive,
+  #main:has(> .sidebar) > .page,
+  #main:has(> .sidebar) > .initial-content {
+    float: none !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* 侧栏：第一列，深色 */
+  #main > .sidebar {
+    background: #0d1a2e !important;
+    padding: 2rem 1.5rem !important;
+    position: sticky !important;
+    top: 80px !important;
+    align-self: start !important;
+    min-height: calc(100vh - 80px);
+  }
+
+  /* 内容区：第二列，白底 */
+  #main > .archive,
+  #main > .page,
+  #main > .initial-content {
+    background: #ffffff !important;
+    padding: 2rem 2.2rem !important;
+  }
+
+  /* 左侧深色延伸到 viewport 左边缘 */
   body {
-    background:
-      linear-gradient(
-        to right,
-        #0d1a2e 0,
-        #0d1a2e calc(max(0px, (100vw - 1280px) / 2) + 265px),
-        #ffffff calc(max(0px, (100vw - 1280px) / 2) + 265px),
-        #ffffff 100%
-      ) fixed !important;
+    position: relative;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: calc(max(0px, (100vw - 1280px) / 2) + 280px);
+    background: #0d1a2e;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* 确保导航、主体、页脚在深色带之上 */
+  .masthead, #main, .page__footer {
+    position: relative;
+    z-index: 1;
   }
 }
 
-/* 侧栏本体深色（与左侧背景带对齐） */
-.sidebar {
-  background: #0d1a2e !important;
-  padding: 1.4rem 1.2rem !important;
-}
-
-/* 内容区显式白底（覆盖 body 渐变在 0-265 之间残留部分） */
-.archive,
-.page,
-.initial-content,
-#main > .archive,
-#main > .page {
-  background: #ffffff;
-}
-
-/* 首页 hero 用自己的画作背景，无需分栏 */
+/* 窄屏兜底：侧栏叠在顶部时仍为深色 */
+.sidebar { background: #0d1a2e !important; }
 .hero-landing { background: transparent !important; }
 
 /* 头像圆角 + 边框 */
