@@ -6,18 +6,85 @@ redirect_from:
   - /about.html
 ---
 
-I am a Postdoctoral Researcher at [The University of Alabama](https://www.ua.edu/) (Dec. 2025 – Present), working with [Prof. Xinyue Ye](https://scholar.google.com/citations?user=Uy76pMcAAAAJ&hl=en).
+<p class="about-lead">
+  Hi, I'm <strong>Dan</strong> — a postdoctoral researcher at
+  <a href="https://www.ua.edu/">The University of Alabama</a>,
+  working with <a href="https://scholar.google.com/citations?user=Uy76pMcAAAAJ&hl=en">Prof. Xinyue Ye</a>.
+</p>
 
-My research lies at the intersection of **GIScience** and **GeoAI**, with a focus on *spatial–temporal knowledge representation and integration* for applications in:
+<p class="about-sub">
+  I study how <strong>cities</strong>, <strong>mobility</strong>, and the <strong>environment</strong>
+  shape human health — using <em>GIScience</em> and <em>GeoAI</em>.
+</p>
 
-- 🚶 **Human Mobility**
-- ⚡ **Disaster Resilience**
-- 🌱 **Environmental Health**
+## Research Interests
 
-I received my **Ph.D. in Human Geography** from [Sun Yat-sen University](https://www.sysu.edu.cn/) in 2025, supervised by [Prof. Suhong Zhou](https://scholar.google.com/citations?user=TTeo-2IAAAAJ&hl=zh-CN). My dissertation — *Geospatial differentiation, factors, and individual behavioral effects of virtual activity preferences among Guangzhou residents* — received the **Excellent Doctoral Dissertation Award** from the School of Geography and Planning.
+<div class="interest-grid">
+  <div class="interest-card">
+    <div class="interest-icon">🚶</div>
+    <h3>Human Mobility</h3>
+    <p>Trajectories, activity patterns, and how people navigate urban space.</p>
+  </div>
+  <div class="interest-card">
+    <div class="interest-icon">⚡</div>
+    <h3>Disaster Resilience</h3>
+    <p>Community response to floods, pandemics, and cascading urban hazards.</p>
+  </div>
+  <div class="interest-card">
+    <div class="interest-icon">🌱</div>
+    <h3>Environmental Health</h3>
+    <p>Green space, noise, air pollution — their physical and mental health effects.</p>
+  </div>
+</div>
 
-During my PhD, I was a visiting student at the [Pierre Louis Institute of Epidemiology and Public Health](https://www.iplesp.upmc.fr/) in Paris (Dec. 2023 – Oct. 2024), working with **Dr. Basile Chaix**. Prior to that, I was a Research Assistant at [The Hong Kong Polytechnic University](https://www.polyu.edu.hk/) under **Assoc. Prof. Yang Xu**.
+## Journey
 
-## Contact
+<div class="timeline">
 
-Feel free to reach out via email at [zoud5@mail2.sysu.edu.cn](mailto:zoud5@mail2.sysu.edu.cn) or through my [Google Scholar](https://scholar.google.com/citations?hl=en&user=flyERAIAAAAJ).
+  <div class="timeline-item timeline-item--current">
+    <div class="timeline-dot"></div>
+    <div class="timeline-head">
+      <h3 class="timeline-title">Postdoctoral Researcher</h3>
+      <span class="timeline-date">Dec. 2025 – Present</span>
+    </div>
+    <div class="timeline-sub">The University of Alabama · with <a href="https://scholar.google.com/citations?user=Uy76pMcAAAAJ&hl=en">Prof. Xinyue Ye</a></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-head">
+      <h3 class="timeline-title">Ph.D. in Human Geography 🏆</h3>
+      <span class="timeline-date">2021 – 2025</span>
+    </div>
+    <div class="timeline-sub">Sun Yat-sen University · with <a href="https://scholar.google.com/citations?user=TTeo-2IAAAAJ&hl=zh-CN">Prof. Suhong Zhou</a></div>
+    <ul class="timeline-meta">
+      <li>Excellent Doctoral Dissertation Award — <em>virtual activity preferences among Guangzhou residents</em></li>
+    </ul>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-head">
+      <h3 class="timeline-title">Visiting PhD Student</h3>
+      <span class="timeline-date">Dec. 2023 – Oct. 2024</span>
+    </div>
+    <div class="timeline-sub">Pierre Louis Institute of Epidemiology & Public Health, Paris · with <strong>Dr. Basile Chaix</strong></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-head">
+      <h3 class="timeline-title">Research Assistant</h3>
+      <span class="timeline-date">2020 – 2021</span>
+    </div>
+    <div class="timeline-sub">The Hong Kong Polytechnic University · with <strong>Assoc. Prof. Yang Xu</strong></div>
+  </div>
+
+</div>
+
+## Get in Touch
+
+📧 [zoud5@mail2.sysu.edu.cn](mailto:zoud5@mail2.sysu.edu.cn) &nbsp;·&nbsp;
+🎓 [Google Scholar](https://scholar.google.com/citations?hl=en&user=flyERAIAAAAJ) &nbsp;·&nbsp;
+💼 [GitHub](https://github.com/Danz-create) &nbsp;·&nbsp;
+🔬 [ResearchGate](https://www.researchgate.net/profile/Dan-Zou-5)
