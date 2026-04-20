@@ -464,7 +464,20 @@ html, body { background: #ffffff !important; }
     margin: 0 auto !important;
     padding: 0 !important;
     position: relative;
-    z-index: 1;
+    overflow: visible;
+  }
+
+  /* 左侧深色延伸到 viewport 左边缘（只覆盖 #main 的 y 范围，不超过 nav）*/
+  #main:has(> .sidebar)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: calc(100% - 280px);   /* 从侧栏右边缘起向左 */
+    width: 100vw;                /* 足够盖到 viewport 左边 */
+    background: #0d1a2e;
+    z-index: 0;
+    pointer-events: none;
   }
 
   /* 覆盖 Susy 浮动 */
@@ -477,6 +490,8 @@ html, body { background: #ffffff !important; }
     max-width: none !important;
     margin: 0 !important;
     padding-right: 0 !important;
+    position: relative;
+    z-index: 1;
   }
 
   /* 侧栏：第一列，深色 */
@@ -495,28 +510,6 @@ html, body { background: #ffffff !important; }
   #main > .initial-content {
     background: #ffffff !important;
     padding: 2rem 2.2rem !important;
-  }
-
-  /* 左侧深色延伸到 viewport 左边缘 */
-  body {
-    position: relative;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: calc(max(0px, (100vw - 1280px) / 2) + 280px);
-    background: #0d1a2e;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  /* 确保导航、主体、页脚在深色带之上 */
-  .masthead, #main, .page__footer {
-    position: relative;
-    z-index: 1;
   }
 }
 
