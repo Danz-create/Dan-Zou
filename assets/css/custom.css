@@ -1,17 +1,18 @@
 /* =========================================================
-   🎨 全局变量（Apple-blue 主题）
+   🎨 配色：莫奈《塞纳河上的早晨》1897
+   蓝紫薄雾 · 晨光倒影 · 深夜树影
    ========================================================= */
 :root {
-  --brand:        #007aff;
-  --brand-hover:  #0a84ff;
+  --brand:        #6070a0;   /* 塞纳河蓝紫 */
+  --brand-hover:  #4a5888;   /* 深蓝紫 hover */
   --brand-ink:    #ffffff;
-  --ink:          #1d1d1f;
-  --muted:        #6e6e73;
-  --border:       #e5e7eb;
-  --hover-bg:    #f5f5f7;
+  --ink:          #1e2a40;   /* 深夜树影 */
+  --muted:        #7080a0;   /* 薄雾灰蓝 */
+  --border:       #c4cce0;   /* 晨雾边框 */
+  --hover-bg:     #eceef8;   /* 极淡紫 */
   --radius:       12px;
   --radius-pill:  999px;
-  --shadow:       0 6px 20px rgba(0, 122, 255, 0.08);
+  --shadow:       0 6px 20px rgba(96, 112, 160, 0.12);
 }
 
 /* =========================================================
@@ -32,21 +33,43 @@
 }
 
 /* =========================================================
-   🏠 首页 Hero
+   🏠 首页 Hero — 塞纳河晨光背景
    ========================================================= */
 .hero-landing {
-  min-height: 82vh;
+  min-height: 88vh;
   display: grid;
   place-items: center;
   padding: 6rem 1.25rem 4rem;
-  background: transparent;
   overflow: hidden;
   position: relative;
+  isolation: isolate;
 }
+
+/* 模糊画作背景层 */
+.hero-landing::before {
+  content: "";
+  position: absolute;
+  inset: -20px;          /* 超出边界以覆盖 blur 白边 */
+  background: url('/Dan-Zou/images/seine-morning.jpg') center/cover no-repeat;
+  filter: blur(10px) brightness(1.05) saturate(1.1);
+  z-index: -2;
+}
+
+/* 半透明白色遮罩，保证文字可读 */
+.hero-landing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(245, 246, 251, 0.72);
+  z-index: -1;
+}
+
 .hero-inner {
   max-width: 720px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 .hero-landing h1 {
   font-size: clamp(2rem, 3.6vw, 3rem);
