@@ -1,11 +1,7 @@
 # Main navigation links shown in the site header
-# "Dan Zou" site title (from _config.yml) is auto-added by the masthead
-# template as the first link back to '/', so no separate Home entry.
+# "Dan Zou" site title auto-links back to '/' as the first item.
 
 main:
-  - title: "About"
-    url: /about/
-
   - title: "Publications"
     url: /publications/
 
