@@ -437,8 +437,11 @@
 .sidebar {
   background: #0d1a2e !important;
   border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 1.4rem 1rem 1.4rem 0.5rem !important;
+  padding: 1.4rem 1rem 1.4rem 0.8rem !important;
   margin-left: 0 !important;
+  /* 让深色向左延伸至浏览器边缘 */
+  box-shadow: -9999px 0 0 9999px #0d1a2e;
+  position: relative;
 }
 /* 侧边栏内的白字不换行截断 */
 .author__desktop,
