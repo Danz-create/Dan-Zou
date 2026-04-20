@@ -89,12 +89,12 @@
   z-index: -2;
 }
 
-/* 半透明白色遮罩，保证文字可读 */
+/* 半透明遮罩 — 让画作清晰透出，文字仍可读 */
 .hero-landing::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(245, 246, 251, 0.72);
+  background: rgba(245, 246, 251, 0.42);
   z-index: -1;
 }
 
@@ -215,17 +215,25 @@
 .topic-card {
   display: block;
   padding: 1.6rem 1.4rem;
-  background: #ffffff;
+  background: rgba(200, 208, 230, 0.22); /* 默认塞纳蓝紫薄雾 */
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--ink) !important;
   text-decoration: none !important;
   transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+  backdrop-filter: blur(2px);
 }
+/* Human Mobility — 晨雾蓝紫 */
+.topic-card:nth-child(1) { background: rgba(176, 188, 224, 0.28); }
+/* Disaster Resilience — 晨光暖粉 */
+.topic-card:nth-child(2) { background: rgba(216, 192, 178, 0.28); }
+/* Environmental Health — 树影青绿 */
+.topic-card:nth-child(3) { background: rgba(160, 190, 168, 0.28); }
 .topic-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow);
   border-color: var(--brand);
+  filter: brightness(1.04);
 }
 .topic-card__icon { font-size: 2rem; margin-bottom: .6rem; }
 .topic-card__title { font-size: 1.15rem; font-weight: 700; margin: 0 0 .5rem; }
@@ -405,7 +413,6 @@
 .portfolio-card {
   display: flex;
   flex-direction: column;
-  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem 1.4rem;
@@ -413,7 +420,14 @@
   color: var(--ink) !important;
   transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
   min-height: 220px;
+  backdrop-filter: blur(2px);
 }
+/* Ongoing — 蓝紫晨雾 */
+.portfolio-card:nth-child(1) { background: rgba(176, 188, 224, 0.28); }
+/* Completed 1 — 暖粉晨光 */
+.portfolio-card:nth-child(2) { background: rgba(216, 192, 178, 0.28); }
+/* Completed 2 — 青绿倒影 */
+.portfolio-card:nth-child(3) { background: rgba(160, 190, 168, 0.28); }
 .portfolio-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 28px rgba(0, 122, 255, 0.1);
