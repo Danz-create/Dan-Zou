@@ -446,38 +446,52 @@
 .archive__item-title a:hover { color: var(--brand); }
 
 /* =========================================================
-   👤 左侧栏：深色背景（与导航栏同色系）
+   👤 左侧栏 + 整体布局背景（左深右白，viewport 自适应）
+   ==========================================================
+   关键策略：body 线性渐变 + fixed attachment，
+   断点 = max(0, (vw-1280)/2) + 侧栏宽
+   这样左侧深色带精确覆盖到侧栏右边缘，
+   右侧白色带延伸到 viewport 边缘，
+   viewport 宽度任意变化都对齐。
    ========================================================= */
-/* ==========================================================
-   关键架构: html 深色 + 内容盒子单独白底
-   ----------------------------------------------------------
-   sidebar 是 position: fixed, 位于 #main 容器左边; 宽屏下
-   #main 容器左边距 = (viewport - 1280) / 2, 数值动态变化,
-   固定 px 的背景断点无法覆盖. 所以让 html 整个变深色,
-   自然填满 sidebar 左边的所有空隙.
-   ========================================================== */
 html {
-  background: #0d1a2e !important;
+  background: #ffffff !important;
 }
 body {
-  background: transparent !important;
+  background: #ffffff !important;
 }
 
-/* 侧边栏 (和 html 同色, 无缝融合) */
+/* 大屏：侧栏出现在左侧时，启用左深右白分栏背景 */
+@media (min-width: 64em) {
+  body {
+    background:
+      linear-gradient(
+        to right,
+        #0d1a2e 0,
+        #0d1a2e calc(max(0px, (100vw - 1280px) / 2) + 265px),
+        #ffffff calc(max(0px, (100vw - 1280px) / 2) + 265px),
+        #ffffff 100%
+      ) fixed !important;
+  }
+}
+
+/* 侧栏本体深色（与左侧背景带对齐） */
 .sidebar {
   background: #0d1a2e !important;
   padding: 1.4rem 1.2rem !important;
 }
 
-/* 内容盒子: 明确白底 */
+/* 内容区显式白底（覆盖 body 渐变在 0-265 之间残留部分） */
 .archive,
 .page,
-.page__inner-wrap,
 .initial-content,
 #main > .archive,
 #main > .page {
   background: #ffffff;
 }
+
+/* 首页 hero 用自己的画作背景，无需分栏 */
+.hero-landing { background: transparent !important; }
 
 /* 头像圆角 + 边框 */
 .author__avatar img {
@@ -503,6 +517,25 @@ body {
 .author__urls li,
 .author__desktop {
   color: rgba(255,255,255,0.72) !important;
+}
+
+/* 侧栏文字换行，不挤压截断 */
+.author__urls li,
+.author__desktop {
+  white-space: normal !important;
+  word-break: break-word !important;
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+  padding: 0.3rem 0 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 0.5rem !important;
+}
+.author__urls li i,
+.author__desktop i {
+  flex-shrink: 0 !important;
+  margin-top: 0.2rem !important;
+  margin-right: 0 !important;
 }
 
 /* 链接 */
