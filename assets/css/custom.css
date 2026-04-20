@@ -450,22 +450,18 @@
    ========================================================= */
 .sidebar {
   background: #0d1a2e !important;
-  border-radius: var(--radius);
   padding: 1.4rem 1.2rem !important;
-  min-width: 200px;
-  position: relative;
 }
 
-/* 用 ::before 向左延伸深色至浏览器边缘（不影响布局） */
-.sidebar::before {
-  content: '';
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 320px;   /* 略大于侧边栏，确保覆盖 */
-  background: #0d1a2e;
-  z-index: -1;
+/* 页面背景左半深色、右半白 — 让侧边栏区域和 body 左边融为一体 */
+body {
+  background: linear-gradient(
+    to right,
+    #0d1a2e 0%,
+    #0d1a2e 300px,
+    #ffffff 300px,
+    #ffffff 100%
+  ) !important;
 }
 
 /* 头像圆角 + 边框 */
