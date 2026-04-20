@@ -1,7 +1,8 @@
 ---
 title: "🌊 Mobility-Integrated Knowledge Graph for LLM-Based Flood Warning Advisory Generation"
-excerpt: "Building a knowledge graph that fuses human-mobility signals with flood hazard data to power LLM-generated, context-aware warning advisories. (Ongoing)"
+excerpt: "Building a knowledge graph that fuses human-mobility signals with flood hazard data to power LLM-generated, context-aware warning advisories."
 collection: portfolio
+status: "Ongoing"
 date: 2025-12-01
 ---
 

@@ -2,6 +2,7 @@
 title: "📡 Urban Residents' Behavior and Environmental Exposure Health Study"
 excerpt: "Personal wearable sensor + GPS + survey field study linking daily activity patterns with environmental exposure and health outcomes in Guangzhou (n=20)."
 collection: portfolio
+status: "Completed"
 date: 2023-11-01
 ---
 

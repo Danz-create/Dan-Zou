@@ -1,14 +1,26 @@
 ---
 layout: archive
-title: "Portfolio"
+title: "Projects"
 permalink: /portfolio/
 author_profile: true
 ---
 
 {% include base_path %}
 
-
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
+<div class="portfolio-grid">
+{% assign sorted_portfolio = site.portfolio | sort: "date" | reverse %}
+{% for post in sorted_portfolio %}
+  <a class="portfolio-card" href="{{ post.url | relative_url }}">
+    <div class="portfolio-card__top">
+      {% if post.status == "Ongoing" %}
+        <span class="proj-badge proj-badge--ongoing">● Ongoing</span>
+      {% else %}
+        <span class="proj-badge proj-badge--done">✓ Completed</span>
+      {% endif %}
+    </div>
+    <h3 class="portfolio-card__title">{{ post.title }}</h3>
+    <p class="portfolio-card__desc">{{ post.excerpt | strip_html }}</p>
+    <span class="portfolio-card__link">Read more →</span>
+  </a>
 {% endfor %}
-
+</div>

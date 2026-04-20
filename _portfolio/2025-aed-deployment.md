@@ -2,6 +2,7 @@
 title: "🫀 AED Deployment Planning Software"
 excerpt: "Optimizing automated external defibrillator placement based on urban building distribution. Registered software copyright (2024SR1452436)."
 collection: portfolio
+status: "Completed"
 date: 2025-01-01
 ---
 
