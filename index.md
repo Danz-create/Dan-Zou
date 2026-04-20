@@ -7,8 +7,8 @@ permalink: /
 <section class="hero-landing">
   <div class="hero-inner">
     <p class="hero-eyebrow">Dan Zou &nbsp;·&nbsp; Postdoctoral Researcher &nbsp;·&nbsp; GeoAI</p>
-    <p class="hero-statement">
-      Urban life unfolds in space and time.
+    <h1 class="hero-title">Urban life unfolds in space and time.</h1>
+    <p class="hero-body">
       I follow the patterns — where people go, when, and why —
       to understand how cities affect our health and resilience.
     </p>

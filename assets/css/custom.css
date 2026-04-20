@@ -124,22 +124,33 @@
   margin: 0 0 1.2rem;
 }
 
-/* 主句：诗意陈述，中等字号，自然换行 */
-.hero-statement {
-  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+/* 第一句：大标题，单行 */
+.hero-title {
+  font-size: clamp(1.5rem, 2.2vw, 2rem) !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+  color: var(--ink) !important;
+  margin: 0 0 0.8rem !important;
+  white-space: nowrap;
+}
+
+/* 后两句：小正文 */
+.hero-body {
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem) !important;
   line-height: 1.7;
-  font-weight: 500;
-  color: var(--ink);
+  font-weight: 400;
+  color: var(--muted);
   margin: 0 0 1.6rem;
-  max-width: 620px;
+  max-width: 520px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .hero-landing h1 {
-  font-size: clamp(2rem, 3.6vw, 3rem);
-  line-height: 1.15;
-  margin: 0 0 1rem;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  line-height: 1.2;
+  margin: 0 0 0.8rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
