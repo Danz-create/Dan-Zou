@@ -93,34 +93,6 @@ redirect_from:
 
 </div>
 
-## 📁 Project Experience
-
-<div class="project-list">
-
-  <div class="project-card">
-    <div class="project-head">
-      <h3>Urban Residents' Behavior and Environmental Exposure Health Study</h3>
-      <span class="timeline-date">May – Nov. 2023</span>
-    </div>
-    <p>Designed surveys, coordinated sensor customization with suppliers, and provided ongoing support to participants to ensure full completion of the study (<em>n = 20</em>).</p>
-  </div>
-
-  <div class="project-card">
-    <div class="project-head">
-      <h3>Optimizing Locations for Emergency Medical Service</h3>
-      <span class="timeline-date">Oct. 2022 – Apr. 2023</span>
-    </div>
-    <p>Analyzed large-scale time-series data, optimized models, and developed a user-friendly interface for data visualization.</p>
-  </div>
-
-</div>
-
-## 📝 Registered Software Copyright
-
-<div class="project-card">
-  <p><b>Dan Zou</b>, Yitong Liao, Ye Xie, Suhong Zhou. <em>AED Deployment Planning Software Based on Urban Building Distribution</em>, Version 1.0. Copyright Registration No. <code>2024SR1452436</code>, 2025.</p>
-</div>
-
 ## 🛠 Skills
 
 <div class="skills-grid">
@@ -150,9 +122,3 @@ redirect_from:
   </div>
 
 </div>
-
-## 🎯 Teaching
-
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
