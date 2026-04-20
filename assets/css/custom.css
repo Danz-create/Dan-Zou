@@ -64,7 +64,7 @@ a:hover { color: var(--brand-hover); text-decoration: underline; }
 }
 
 /* =========================================================
-   🧭 顶部导航（固定顶部 + 玻璃磨砂）
+   🧭 顶部导航（简化版，全部链接常驻显示）
    ========================================================= */
 .masthead {
   position: fixed !important;
@@ -84,46 +84,71 @@ a:hover { color: var(--brand-hover); text-decoration: underline; }
 }
 
 .masthead__inner-wrap {
-  padding: 0.6rem 1rem !important;
+  padding: 0.6rem 1.25rem !important;
   max-width: 1280px;
   margin: 0 auto;
 }
 
-.masthead .visible-links {
+.simple-nav {
   display: flex !important;
   flex-wrap: wrap;
   align-items: center;
-  margin: 0 !important;
+  justify-content: flex-start;
+  gap: 0.25rem 0.6rem;
+  width: 100%;
 }
 
-.masthead .masthead__menu-item {
-  display: inline-block !important;
-  background: transparent !important;
-}
-
-.masthead .site-title,
-.greedy-nav .site-title {
+.simple-nav .site-title {
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--ink) !important;
+  text-decoration: none !important;
+  padding: 0.4rem 0.6rem;
+  margin-right: 0.6rem;
+  letter-spacing: -0.01em;
 }
 
-.greedy-nav {
-  background: transparent !important;
+.simple-nav__links {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem;
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-.greedy-nav a {
-  color: var(--ink) !important;
+.simple-nav__links li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.simple-nav__links a {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
   font-size: 0.92rem;
   font-weight: 500;
-  padding: 0.4rem 0.9rem !important;
+  color: var(--ink) !important;
+  text-decoration: none !important;
   border-radius: var(--radius-pill);
   transition: background .15s ease, color .15s ease;
 }
 
-.greedy-nav a:hover {
+.simple-nav__links a:hover,
+.simple-nav__links a.active {
   background: var(--hover-bg);
   color: var(--brand) !important;
-  text-decoration: none;
+}
+
+.simple-nav__links a.active {
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .masthead__inner-wrap { padding: 0.5rem 0.8rem !important; }
+  .simple-nav .site-title { font-size: 1rem; margin-right: 0.2rem; }
+  .simple-nav__links a { padding: 0.35rem 0.55rem; font-size: 0.85rem; }
 }
 
 /* =========================================================

@@ -16,33 +16,19 @@
     await mermaid.run({querySelector:'code.language-mermaid'});
 </script>
 
-<!-- Neutralize greedy-nav: pull hidden links back into visible-links so every
-     page shows the full navigation, regardless of width calculation glitches. -->
+<!-- Adjust body padding for the fixed masthead so content doesn't sit under it -->
 <script>
 (function () {
-  function restoreNav() {
-    var $ = window.jQuery;
-    if (!$) return;
-    var $visible = $('#site-nav .visible-links');
-    var $hidden  = $('#site-nav .hidden-links');
-    var $btn     = $('#site-nav button');
-    if (!$visible.length) return;
-    var $tail = $visible.children('.persist.tail');
-    $hidden.children().each(function () {
-      if ($tail.length) { $(this).insertBefore($tail); } else { $(this).appendTo($visible); }
-    });
-    $hidden.addClass('hidden');
-    $btn.addClass('hidden');
-    $visible.css({ 'display': 'flex', 'flex-wrap': 'wrap', 'align-items': 'center' });
-    var h = $('.masthead').outerHeight();
-    if (h) { $('body').css('padding-top', h + 'px'); }
+  function syncPadding() {
+    var m = document.querySelector('.masthead');
+    if (!m) return;
+    document.body.style.paddingTop = m.offsetHeight + 'px';
   }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { setTimeout(restoreNav, 50); });
-  } else {
-    setTimeout(restoreNav, 50);
-  }
-  window.addEventListener('load', function () { setTimeout(restoreNav, 100); });
+    document.addEventListener('DOMContentLoaded', syncPadding);
+  } else { syncPadding(); }
+  window.addEventListener('load', syncPadding);
+  window.addEventListener('resize', syncPadding);
 })();
 </script>
 
