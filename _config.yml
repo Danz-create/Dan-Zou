@@ -23,14 +23,14 @@ repository               : "danz-create/Dan-Zou"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Dan Zou"
-  pronouns         : "she/her"  
+  pronouns         : "she/her"
   bio              : "Posdoctoral researcher using GeoAI to study urban health and resilience across environmental and social dimensions"
   location         : "Tuscaloosa, Alabama, US"
   employer         : "The University of Alabama"
   uri              : # URL
-  email            : "zdan.dec@gmail.com" 
+  email            : "dzou4@ua.edu"
 
   # Academic websites
   #academia         : # URL
