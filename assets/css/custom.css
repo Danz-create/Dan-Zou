@@ -16,20 +16,54 @@
 }
 
 /* =========================================================
-   🧭 顶部导航：只换颜色，并让链接更紧凑
+   🧭 顶部导航：深海军蓝背景 + 白字 + 增高
    ========================================================= */
-.greedy-nav a {
-  color: var(--ink);
-  transition: color .15s ease;
-  padding: 0.4rem 0.6rem;
+.masthead,
+.masthead__inner-wrap,
+.greedy-nav {
+  background: #0d1a2e !important;
+  border-bottom: none !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+.masthead__inner-wrap {
+  padding-top: 0.85rem !important;
+  padding-bottom: 0.85rem !important;
+}
+
+/* 所有导航链接白色 */
+.greedy-nav a,
+.masthead .site-title {
+  color: #ffffff !important;
   font-size: 0.95rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  transition: background .15s ease, color .15s ease;
 }
-.greedy-nav a:hover {
-  color: var(--brand);
+
+.greedy-nav a:hover,
+.masthead .site-title:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12) !important;
 }
+
+/* 当前页：白色下划线高亮 */
 .masthead__menu-item.selected a {
-  color: var(--brand) !important;
-  border-bottom: 2px solid var(--brand) !important;
+  color: #ffffff !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.8) !important;
+  font-weight: 600;
+}
+
+/* 站点标题字体加粗 */
+.masthead__menu-item--lg a {
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+}
+
+/* 汉堡按钮白色 */
+.greedy-nav button {
+  color: #ffffff !important;
+  background: transparent !important;
 }
 
 /* =========================================================
