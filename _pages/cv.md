@@ -93,16 +93,6 @@ redirect_from:
 
 </div>
 
-## 🔬 Research Areas
-
-GIScience and GeoAI, with a focus on spatial–temporal knowledge representation and integration for applications in:
-
-<div class="chip-row">
-  <span class="chip chip--primary">Human Mobility</span>
-  <span class="chip chip--primary">Disaster Resilience</span>
-  <span class="chip chip--primary">Environmental Health</span>
-</div>
-
 ## 📁 Project Experience
 
 <div class="project-list">
