@@ -401,6 +401,70 @@
 .archive__item-title a:hover { color: var(--brand); }
 
 /* =========================================================
+   👤 左侧栏：深色背景（与导航栏同色系）
+   ========================================================= */
+.sidebar {
+  background: #0d1a2e !important;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.4rem 1rem !important;
+}
+
+/* 头像圆角 + 边框 */
+.author__avatar img {
+  border: 3px solid rgba(255,255,255,0.15) !important;
+  border-radius: 50%;
+}
+
+/* 姓名、代词、bio 全白 */
+.author__name {
+  color: #ffffff !important;
+}
+.author__pronouns {
+  color: rgba(255,255,255,0.6) !important;
+}
+.author__bio {
+  color: rgba(255,255,255,0.75) !important;
+  font-size: 0.88rem;
+}
+
+/* 图标 + 地址等信息 */
+.author__urls-wrapper,
+.author__urls,
+.author__urls li,
+.author__desktop {
+  color: rgba(255,255,255,0.72) !important;
+}
+
+/* 链接 */
+.author__urls a,
+.author__urls-wrapper a {
+  color: rgba(255,255,255,0.85) !important;
+}
+.author__urls a:hover,
+.author__urls-wrapper a:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+}
+
+/* 图标颜色 */
+.author__urls .fas,
+.author__urls .fab,
+.author__urls .far,
+.author__urls .ai {
+  color: rgba(255,255,255,0.55) !important;
+}
+
+/* "Follow" 按钮 */
+.author__urls-wrapper .btn--inverse {
+  background: rgba(255,255,255,0.12) !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+.author__urls-wrapper .btn--inverse:hover {
+  background: rgba(255,255,255,0.22) !important;
+}
+
+/* =========================================================
    🗂 Portfolio 卡片网格
    ========================================================= */
 .portfolio-grid {
