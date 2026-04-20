@@ -1,0 +1,17 @@
+---
+layout: archive
+title: "Publications — Human Mobility"
+permalink: /publications/human-mobility/
+author_profile: true
+---
+
+{% include base_path %}
+
+<p class="topic-back"><a href="{{ '/publications/' | relative_url }}">← Back to all topics</a></p>
+
+<p class="topic-desc">GPS trajectories, travel behavior, and predictive modeling of human movement at individual and collective scales.</p>
+
+{% assign sorted = site.publications | where: "category", "human-mobility" | sort: "date" | reverse %}
+{% for post in sorted %}
+  {% include archive-single.html %}
+{% endfor %}
