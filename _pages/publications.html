@@ -5,47 +5,32 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% include base_path %}
-
 {% if site.author.googlescholar %}
-  <p class="pub-scholar-link">You can also find my articles on my <a href="{{site.author.googlescholar}}">Google Scholar profile</a>.</p>
+  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-<p class="pub-intro">My research spans three main themes. Click a topic below to see the related publications.</p>
+{% include base_path %}
 
-<div class="topic-cards">
+<!-- New style rendering if publication categories are defined -->
+{% if site.publication_category %}
+  {% for category in site.publication_category  %}
+    {% assign title_shown = false %}
+    {% for post in site.publications reversed %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        <h2>{{ category[1].title }}</h2><hr />
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  {% for post in site.publications reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}
 
-  <a class="topic-card" href="{{ '/publications/human-mobility/' | relative_url }}">
-    <div class="topic-card__icon">🚶</div>
-    <h2 class="topic-card__title">Human Mobility</h2>
-    <p class="topic-card__desc">GPS trajectories, travel behavior, and predictive modeling of human movement at individual and collective scales.</p>
-    <span class="topic-card__count">
-      {% assign n = 0 %}
-      {% for post in site.publications %}{% if post.category == 'human-mobility' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
-      {{ n }} publications →
-    </span>
-  </a>
 
-  <a class="topic-card" href="{{ '/publications/disaster-resilience/' | relative_url }}">
-    <div class="topic-card__icon">⚡</div>
-    <h2 class="topic-card__title">Disaster Resilience</h2>
-    <p class="topic-card__desc">Spatiotemporal modeling of disasters, pandemics, and adaptive responses in crisis-affected systems.</p>
-    <span class="topic-card__count">
-      {% assign n = 0 %}
-      {% for post in site.publications %}{% if post.category == 'disaster-resilience' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
-      {{ n }} publications →
-    </span>
-  </a>
 
-  <a class="topic-card" href="{{ '/publications/environmental-health/' | relative_url }}">
-    <div class="topic-card__icon">🌱</div>
-    <h2 class="topic-card__title">Environmental Health</h2>
-    <p class="topic-card__desc">Environmental exposure, green space, air pollution, noise, and their impacts on physical and mental health.</p>
-    <span class="topic-card__count">
-      {% assign n = 0 %}
-      {% for post in site.publications %}{% if post.category == 'environmental-health' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
-      {{ n }} publications →
-    </span>
-  </a>
-
-</div>
