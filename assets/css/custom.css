@@ -1,34 +1,154 @@
 /* =========================================================
-   🎨 全局变量（Apple-blue 主题）
+   🎨 全局颜色与样式变量（Apple-blue 风格，仿 nehsgnail）
    ========================================================= */
 :root {
-  --brand:       #007aff;
-  --brand-hover: #0a84ff;
-  --brand-ink:   #ffffff;
-  --ink:         #1d1d1f;
-  --muted:       #6e6e73;
-  --border:      #e5e7eb;
-  --hover-bg:    #f5f5f7;
-  --radius:      12px;
-  --radius-pill: 999px;
-  --shadow:      0 6px 20px rgba(0, 122, 255, 0.08);
+  --brand:        #007aff;   /* 主色：苹果蓝 */
+  --brand-hover:  #0a84ff;   /* hover 更亮 */
+  --brand-ink:    #ffffff;   /* 主色按钮文字 */
+  --ink:          #1d1d1f;   /* 主文字 */
+  --muted:        #6e6e73;   /* 次要文字 */
+  --border:       #e5e7eb;   /* 边框 */
+  --page-bg:      #ffffff;   /* 页面背景 */
+  --hover-bg:     #f5f5f7;   /* hover 背景 */
+  --radius:       12px;
+  --radius-pill:  999px;
+  --shadow:       0 6px 20px rgba(0, 122, 255, 0.08);
+  --shadow-hover: 0 10px 28px rgba(0, 122, 255, 0.15);
+
+  --font-sans:    "Roboto", "Inter", system-ui, -apple-system, "Segoe UI",
+                  "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 /* =========================================================
-   🧭 顶部导航颜色（保留原版 greedy-nav 结构，只换色）
+   📄 基础结构 & 字体
    ========================================================= */
-.greedy-nav a {
+html, body { height: 100%; }
+
+body {
+  background: var(--page-bg);
   color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--brand); }
+a:hover { color: var(--brand-hover); text-decoration: underline; }
+
+/* 主要容器盖在背景之上 (注意: masthead 保留默认 fixed 定位, 否则滚动后会消失) */
+.page__footer,
+.page,
+.page__inner-wrap,
+.hero-landing,
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* 内页内容腾出顶部空间, 避免被 fixed masthead 盖住 */
+.layout--archive #main,
+.layout--single  #main {
+  padding-top: 4.5rem;
+}
+
+/* =========================================================
+   🌌 首页背景气泡（改成蓝色）
+   ========================================================= */
+#dots-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: .35;
+  z-index: 0;
+}
+
+/* =========================================================
+   🧭 顶部导航（简化版，全部链接常驻显示）
+   ========================================================= */
+.masthead {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-height: 56px !important;
+  height: auto !important;
+  z-index: 50 !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  overflow: visible !important;
+}
+
+.masthead__inner-wrap {
+  padding: 0.6rem 1.25rem !important;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.simple-nav {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.25rem 0.6rem;
+  width: 100%;
+}
+
+.simple-nav .site-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  padding: 0.4rem 0.6rem;
+  margin-right: 0.6rem;
+  letter-spacing: -0.01em;
+}
+
+.simple-nav__links {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem;
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.simple-nav__links li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.simple-nav__links a {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink) !important;
+  text-decoration: none !important;
   border-radius: var(--radius-pill);
   transition: background .15s ease, color .15s ease;
 }
-.greedy-nav a:hover {
-  color: var(--brand);
+
+.simple-nav__links a:hover,
+.simple-nav__links a.active {
   background: var(--hover-bg);
-}
-.masthead__menu-item.selected a {
   color: var(--brand) !important;
-  border-bottom: 2px solid var(--brand) !important;
+}
+
+.simple-nav__links a.active {
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .masthead__inner-wrap { padding: 0.5rem 0.8rem !important; }
+  .simple-nav .site-title { font-size: 1rem; margin-right: 0.2rem; }
+  .simple-nav__links a { padding: 0.35rem 0.55rem; font-size: 0.85rem; }
 }
 
 /* =========================================================
@@ -41,13 +161,13 @@
   padding: 6rem 1.25rem 4rem;
   background: transparent;
   overflow: hidden;
-  position: relative;
 }
 .hero-inner {
   max-width: 720px;
   margin: 0 auto;
   text-align: center;
 }
+
 .hero-landing h1 {
   font-size: clamp(2rem, 3.6vw, 3rem);
   line-height: 1.15;
@@ -55,7 +175,9 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
+  font-family: var(--font-sans);
 }
+
 .hero-lead {
   font-size: clamp(1rem, 1.1vw, 1.15rem);
   color: var(--muted);
@@ -63,6 +185,10 @@
   margin: 0 auto 1.4rem;
   line-height: 1.65;
 }
+
+/* =========================================================
+   🔖 关键词 pill 标签（透明边框）
+   ========================================================= */
 .hero-tags {
   display: flex;
   gap: .5rem;
@@ -74,17 +200,23 @@
   display: inline-block;
   padding: .38rem .9rem;
   border-radius: var(--radius-pill);
-  background: transparent;
-  border: 1px solid var(--border);
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
   font-size: .82rem;
   font-weight: 500;
-  color: var(--muted);
+  line-height: 1;
+  color: var(--muted) !important;
+  box-shadow: none !important;
   transition: all .15s ease;
 }
 .pill:hover {
-  border-color: var(--brand);
-  color: var(--brand);
+  border-color: var(--brand) !important;
+  color: var(--brand) !important;
 }
+
+/* =========================================================
+   🔘 CTA 按钮（主蓝 + 次白）
+   ========================================================= */
 .hero-cta {
   display: flex;
   gap: .8rem;
@@ -106,37 +238,35 @@
   cursor: pointer;
 }
 .btn:hover { transform: translateY(-1px); }
+
+/* 主按钮 Publications */
 .hero-cta a:nth-child(1) {
-  background: var(--brand);
+  background: var(--brand) !important;
   color: var(--brand-ink) !important;
-  border-color: var(--brand);
+  border-color: var(--brand) !important;
   box-shadow: var(--shadow);
 }
 .hero-cta a:nth-child(1):hover {
-  background: var(--brand-hover);
+  background: var(--brand-hover) !important;
+  box-shadow: var(--shadow-hover);
 }
+
+/* 次按钮 CV & Projects */
 .hero-cta a:nth-child(2),
 .hero-cta a:nth-child(3) {
-  background: #ffffff;
+  background: #ffffff !important;
   color: var(--ink) !important;
-  border-color: var(--border);
+  border-color: var(--border) !important;
 }
 .hero-cta a:nth-child(2):hover,
 .hero-cta a:nth-child(3):hover {
-  border-color: var(--brand);
+  border-color: var(--brand) !important;
   color: var(--brand) !important;
 }
 
-#dots-bg {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  opacity: .35;
-  z-index: 0;
-}
-
+/* =========================================================
+   📱 响应式
+   ========================================================= */
 @media (max-width: 640px) {
   .hero-landing { padding: 4.5rem 1rem 3rem; }
   .btn { width: 100%; }
@@ -144,10 +274,91 @@
 }
 
 /* =========================================================
+   📄 内页（Publications / Projects / CV / About...）
+   ========================================================= */
+.page__title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.page .page__inner-wrap > *:first-child { margin-top: 0; }
+
+/* 压缩导航间距 */
+.layout--archive .masthead,
+.layout--single  .masthead {
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+
+/* 侧栏 sticky 位置 */
+@media (min-width: 801px) {
+  .layout--archive .sidebar.sticky,
+  .layout--single  .sidebar.sticky { top: 72px; }
+}
+
+/* =========================================================
+   👤 左侧作者卡片
+   ========================================================= */
+.layout--archive .sidebar,
+.layout--single  .sidebar {
+  background: transparent !important;
+}
+
+.author__avatar img {
+  border-radius: 50%;
+  border: 3px solid var(--border);
+}
+
+.author__name {
+  font-weight: 700;
+  color: var(--ink);
+}
+.author__bio,
+.author__urls {
+  color: var(--muted);
+}
+.author__urls a {
+  color: var(--muted) !important;
+}
+.author__urls a:hover {
+  color: var(--brand) !important;
+}
+
+/* =========================================================
+   📰 Publications / Archive 列表
+   ========================================================= */
+.archive__item-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.archive__item-title a {
+  color: var(--ink);
+}
+.archive__item-title a:hover {
+  color: var(--brand);
+}
+.archive__subtitle {
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .4rem;
+  margin-top: 2rem;
+}
+
+/* =========================================================
    🎴 Publications 主题卡片
    ========================================================= */
-.pub-intro { color: var(--muted); margin-bottom: 1.5rem; }
-.pub-scholar-link { color: var(--muted); font-size: .9rem; margin-bottom: 1rem; }
+.pub-intro {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+.pub-scholar-link {
+  color: var(--muted);
+  font-size: .9rem;
+  margin-bottom: 1rem;
+}
 
 .topic-cards {
   display: grid;
@@ -155,6 +366,7 @@
   gap: 1.2rem;
   margin: 1.5rem 0 2rem;
 }
+
 .topic-card {
   display: block;
   padding: 1.6rem 1.4rem;
@@ -169,19 +381,50 @@
   transform: translateY(-3px);
   box-shadow: var(--shadow);
   border-color: var(--brand);
+  color: var(--ink) !important;
 }
-.topic-card__icon { font-size: 2rem; margin-bottom: .6rem; }
-.topic-card__title { font-size: 1.15rem; font-weight: 700; margin: 0 0 .5rem; }
-.topic-card__desc { font-size: .88rem; color: var(--muted); line-height: 1.55; margin: 0 0 1rem; }
-.topic-card__count { font-size: .82rem; color: var(--brand); font-weight: 600; }
+.topic-card__icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: .6rem;
+}
+.topic-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 .5rem;
+  color: var(--ink);
+}
+.topic-card__desc {
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+}
+.topic-card__count {
+  font-size: .82rem;
+  color: var(--brand);
+  font-weight: 600;
+}
 
-.topic-back { font-size: .88rem; margin-bottom: 1rem; }
-.topic-back a { color: var(--muted); }
-.topic-back a:hover { color: var(--brand); }
-.topic-desc { color: var(--muted); font-style: italic; margin-bottom: 1.5rem; }
+/* Topic sub-page */
+.topic-back {
+  font-size: .88rem;
+  margin-bottom: 1rem;
+}
+.topic-back a {
+  color: var(--muted);
+}
+.topic-back a:hover {
+  color: var(--brand);
+}
+.topic-desc {
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
 
 /* =========================================================
-   📜 CV 时间轴
+   📜 CV 时间轴 & 卡片
    ========================================================= */
 .timeline {
   position: relative;
@@ -198,7 +441,10 @@
   background: linear-gradient(to bottom, var(--brand) 0%, var(--border) 100%);
   border-radius: 1px;
 }
-.timeline-item { position: relative; padding: 0 0 1.4rem 1rem; }
+.timeline-item {
+  position: relative;
+  padding: 0 0 1.4rem 1rem;
+}
 .timeline-item:last-child { padding-bottom: 0; }
 .timeline-dot {
   position: absolute;
@@ -245,7 +491,11 @@
   border-radius: var(--radius-pill);
   white-space: nowrap;
 }
-.timeline-sub { font-size: .93rem; color: var(--muted); margin-bottom: .35rem; }
+.timeline-sub {
+  font-size: .93rem;
+  color: var(--muted);
+  margin-bottom: .35rem;
+}
 .timeline-meta {
   list-style: none;
   margin: .25rem 0 0 !important;
@@ -256,11 +506,17 @@
   color: var(--ink);
   line-height: 1.55;
   margin: .15rem 0;
+  padding-left: 0;
 }
 .timeline-meta li::marker { content: ''; }
 
-/* Chips */
-.chip-row { display: flex; gap: .5rem; flex-wrap: wrap; margin: .8rem 0 1.8rem; }
+/* Research area chips */
+.chip-row {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin: .8rem 0 1.8rem;
+}
 .chip {
   display: inline-block;
   padding: .4rem .9rem;
@@ -277,8 +533,13 @@
   border-color: rgba(0, 122, 255, 0.25);
 }
 
-/* Project / Skill cards */
-.project-list { display: flex; flex-direction: column; gap: 1rem; margin: 1rem 0 1.8rem; }
+/* Project card */
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0 1.8rem;
+}
 .project-card {
   background: #ffffff;
   border: 1px solid var(--border);
@@ -287,7 +548,10 @@
   padding: 1rem 1.1rem;
   transition: box-shadow .2s ease, transform .15s ease;
 }
-.project-card:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+.project-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
 .project-card h3 {
   margin: 0 !important;
   padding: 0 !important;
@@ -304,8 +568,14 @@
   gap: .5rem;
   margin-bottom: .4rem;
 }
-.project-card p { margin: .3rem 0 0; font-size: .9rem; color: var(--muted); line-height: 1.55; }
+.project-card p {
+  margin: .3rem 0 0;
+  font-size: .9rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
 
+/* Skills grid */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -319,8 +589,16 @@
   padding: 1rem 1.1rem;
   transition: box-shadow .2s ease, border-color .2s ease, transform .15s ease;
 }
-.skill-card:hover { border-color: var(--brand); box-shadow: var(--shadow); transform: translateY(-2px); }
-.skill-icon { font-size: 1.6rem; margin-bottom: .5rem; }
+.skill-card:hover {
+  border-color: var(--brand);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+.skill-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: .5rem;
+}
 .skill-card h4 {
   font-size: .98rem;
   font-weight: 700;
@@ -329,8 +607,26 @@
   padding: 0 !important;
   border: none !important;
 }
-.skill-card p { font-size: .85rem; color: var(--muted); line-height: 1.55; margin: 0; }
+.skill-card p {
+  font-size: .85rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
 
-/* Archive list links */
-.archive__item-title a { color: var(--ink); }
-.archive__item-title a:hover { color: var(--brand); }
+/* =========================================================
+   🦶 Footer（极简）
+   ========================================================= */
+.page__footer {
+  background: var(--page-bg) !important;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+.page__footer a { color: var(--muted); }
+.page__footer a:hover { color: var(--brand); }
+
+/* 隐藏模板默认的 Minimal Mistakes 版权“Follow” 那一列的多余装饰 */
+.page__footer-follow,
+.page__footer-copyright {
+  font-size: .82rem;
+}
