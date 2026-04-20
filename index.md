@@ -6,16 +6,18 @@ permalink: /
 
 <section class="hero-landing">
   <div class="hero-inner">
-    <h1><span style="margin-right:.4rem">🤗</span>Welcome to Dan's Portfolio</h1>
-    <p class="hero-lead">
-      Dan Zou is a postdoctoral researcher at <a href="https://www.ua.edu/">The University of Alabama</a>,
-      using GeoAI to study urban health and resilience across environmental and social dimensions.
-    </p>
+    <p class="hero-eyebrow">Dan Zou &nbsp;·&nbsp; Postdoctoral Researcher &nbsp;·&nbsp; GeoAI</p>
+    <h1 class="hero-statement">
+      Urban life unfolds in space and time.<br>
+      I follow the patterns — where people go, when, and why —<br>
+      to understand how cities affect our health and resilience.
+    </h1>
 
     <div class="hero-tags">
-      <span class="pill">Urban Health</span>
+      <span class="pill">Spatiotemporal Analysis</span>
       <span class="pill">Human Mobility</span>
-      <span class="pill">Geospatial AI</span>
+      <span class="pill">Urban Health</span>
+      <span class="pill">Disaster Resilience</span>
     </div>
 
     <div class="hero-cta">
