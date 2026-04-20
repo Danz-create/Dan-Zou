@@ -12,7 +12,7 @@ site_theme               : "default" # Currently available options are "default"
 title                    : "Dan Zou"
 title_separator          : "-"
 name                     : &name "Dan zou"
-description              : &description "Dan Zou's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Dan Zou — Postdoctoral Researcher at The University of Alabama. GeoAI, human mobility, urban health, disaster resilience, and spatiotemporal analysis."
 url                      : https://danz-create.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "/Dan-Zou" # the subpath of your site, e.g. "/blog"
@@ -96,8 +96,10 @@ atom_feed:
 
 
 # SEO Related
-google_site_verification :
-bing_site_verification   :
+# 填入 Google Search Console 验证码（HTML tag 方式的 content 字符串）
+# 步骤: https://search.google.com/search-console → 添加资源 → 选 HTML tag → 复制 content=""
+google_site_verification : ""
+bing_site_verification   : ""
 alexa_site_verification  :
 yandex_site_verification :
 
