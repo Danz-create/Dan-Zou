@@ -18,31 +18,40 @@
 /* =========================================================
    🧭 顶部导航：深海军蓝背景 + 白字 + 增高
    ========================================================= */
-.masthead,
-.masthead__inner-wrap,
-.greedy-nav {
+.masthead {
   background: #0d1a2e !important;
   border-bottom: none !important;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25) !important;
 }
-
 .masthead__inner-wrap {
+  background: #0d1a2e !important;
   padding-top: 0.85rem !important;
   padding-bottom: 0.85rem !important;
 }
+.greedy-nav {
+  background: #0d1a2e !important;
+}
+
+/* 菜单项和下拉都用深色 */
+.masthead__menu-item,
+.greedy-nav .hidden-links {
+  background: #0d1a2e !important;
+}
+.greedy-nav .hidden-links {
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
+}
 
 /* 所有导航链接白色 */
-.greedy-nav a,
-.masthead .site-title {
+.greedy-nav a {
   color: #ffffff !important;
   font-size: 0.95rem;
   padding: 0.4rem 0.7rem;
   border-radius: 6px;
-  transition: background .15s ease, color .15s ease;
+  transition: background .15s ease;
 }
-
-.greedy-nav a:hover,
-.masthead .site-title:hover {
+.greedy-nav a:hover {
   color: #ffffff !important;
   background: rgba(255, 255, 255, 0.12) !important;
 }
@@ -115,14 +124,16 @@
   margin: 0 0 1.2rem;
 }
 
-/* 主句：三行诗意陈述 */
+/* 主句：诗意陈述，中等字号，自然换行 */
 .hero-statement {
-  font-size: clamp(1.35rem, 2.4vw, 2rem);
-  line-height: 1.55;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.7;
+  font-weight: 500;
   color: var(--ink);
   margin: 0 0 1.6rem;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-landing h1 {
@@ -426,7 +437,15 @@
 .sidebar {
   background: #0d1a2e !important;
   border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 1.4rem 1rem !important;
+  padding: 1.4rem 1rem 1.4rem 0.5rem !important;
+  margin-left: 0 !important;
+}
+/* 侧边栏内的白字不换行截断 */
+.author__desktop,
+.author__urls li {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
 }
 
 /* 头像圆角 + 边框 */
