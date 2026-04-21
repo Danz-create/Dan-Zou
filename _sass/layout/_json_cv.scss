@@ -515,7 +515,7 @@
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 28px rgba(13, 148, 136, 0.14);
+    box-shadow: 0 10px 28px rgba(110, 114, 160, 0.18);
     border-color: var(--global-accent-color);
     text-decoration: none !important;
 
@@ -536,9 +536,9 @@
   flex-shrink: 0;
 }
 
-/* Flood: deep blue → teal + diagonal stripe */
+/* Flood: mist blue-slate + diagonal stripe (Monet palette) */
 .portfolio-card__header--flood {
-  background: linear-gradient(135deg, #0f4c91 0%, #0d9488 100%);
+  background: linear-gradient(135deg, #2C334A 0%, #5A7090 100%);
 
   &::before {
     content: '';
@@ -554,24 +554,24 @@
   }
 }
 
-/* Network / AED: warm red → orange + dot grid */
+/* Network / AED: warm sand → dusty rose + dot grid */
 .portfolio-card__header--network {
-  background: linear-gradient(135deg, #c2410c 0%, #b45309 100%);
+  background: linear-gradient(135deg, #6B5B4E 0%, #A8826A 100%);
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image: radial-gradient(
-      circle, rgba(255,255,255,0.18) 1px, transparent 1px
+      circle, rgba(255,255,255,0.14) 1px, transparent 1px
     );
     background-size: 16px 16px;
   }
 }
 
-/* Health / exposure: deep green → teal + concentric arcs */
+/* Health / exposure: sage green + concentric arcs */
 .portfolio-card__header--health {
-  background: linear-gradient(135deg, #064e3b 0%, #0d9488 100%);
+  background: linear-gradient(135deg, #3D5446 0%, #7A9E82 100%);
 
   &::before {
     content: '';
@@ -589,10 +589,7 @@
 
 /* Fallback */
 .portfolio-card__header--default {
-  background: linear-gradient(135deg,
-    var(--global-accent-color-hover) 0%,
-    var(--global-accent-color) 100%
-  );
+  background: linear-gradient(135deg, #3A4260 0%, #8D90B8 100%);
 }
 
 /* ---- Status badges (on top of header image) ---- */
