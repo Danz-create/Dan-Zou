@@ -39,7 +39,7 @@ redirect_from:
     </div>
     <div class="timeline-sub">Pierre Louis Institute of Epidemiology and Public Health, Paris, France</div>
     <ul class="timeline-meta">
-      <li><b>Co-supervisor:</b> Dr. Basile Chaix</li>
+      <li><b>Co-supervisor:</b> <a href="https://scholar.google.com/citations?user=MY34aGEAAAAJ&hl=en">Dr. Basile Chaix</a></li>
     </ul>
   </div>
 
@@ -87,7 +87,7 @@ redirect_from:
     </div>
     <div class="timeline-sub">The Hong Kong Polytechnic University, Hong Kong, China</div>
     <ul class="timeline-meta">
-      <li><b>Supervisor:</b> Assoc. Prof. Yang Xu</li>
+      <li><b>Supervisor:</b> <a href="https://scholar.google.com/citations?user=97A-qAoAAAAJ&hl=en">Assoc. Prof. Yang Xu</a></li>
     </ul>
   </div>
 
