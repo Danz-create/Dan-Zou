@@ -7,45 +7,171 @@ author_profile: true
 
 {% include base_path %}
 
-{% if site.author.googlescholar %}
-  <p class="pub-scholar-link">You can also find my articles on my <a href="{{site.author.googlescholar}}">Google Scholar profile</a>.</p>
-{% endif %}
+<p class="pub-intro">
+  My work spans human mobility, disaster resilience, and environmental health.
+  {% if site.author.googlescholar %}
+    Browse by theme below, or view the full list on <a href="{{ site.author.googlescholar }}">Google Scholar</a>.
+  {% endif %}
+</p>
 
-<p class="pub-intro">My research spans three main themes. Click a topic below to see the related publications.</p>
+<!-- ── Topic cards ─────────────────────────────────────────────── -->
+<div class="topic-grid">
 
-<div class="topic-cards">
+  <button class="topic-card" data-topic="human-mobility" aria-pressed="false">
+    <div class="topic-card__header topic-card__header--mobility">
+      <span class="topic-card__count-badge">
+        {% assign n = 0 %}{% for p in site.publications %}{% if p.category == 'human-mobility' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+        {{ n }}
+      </span>
+    </div>
+    <div class="topic-card__body">
+      <span class="topic-card__label">Research Theme</span>
+      <h2 class="topic-card__title">Human Mobility</h2>
+      <p class="topic-card__desc">GPS trajectories, travel behavior, and predictive movement modeling at individual and collective scales.</p>
+      <div class="topic-card__tags">
+        <span class="topic-tag">GPS Trajectories</span>
+        <span class="topic-tag">Travel Behavior</span>
+        <span class="topic-tag">Predictive Modeling</span>
+      </div>
+    </div>
+    <div class="topic-card__footer">
+      <span class="topic-card__cta">
+        {% assign n = 0 %}{% for p in site.publications %}{% if p.category == 'human-mobility' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+        {{ n }} publications <span class="topic-card__arrow">→</span>
+      </span>
+    </div>
+  </button>
 
-  <a class="topic-card" href="{{ '/publications/human-mobility/' | relative_url }}">
-    <div class="topic-card__icon">🚶</div>
-    <h2 class="topic-card__title">Human Mobility</h2>
-    <p class="topic-card__desc">GPS trajectories, travel behavior, and predictive modeling of human movement at individual and collective scales.</p>
-    <span class="topic-card__count">
-      {% assign n = 0 %}
-      {% for post in site.publications %}{% if post.category == 'human-mobility' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
-      {{ n }} publications →
-    </span>
-  </a>
+  <button class="topic-card" data-topic="disaster-resilience" aria-pressed="false">
+    <div class="topic-card__header topic-card__header--disaster">
+      <span class="topic-card__count-badge">
+        {% assign n = 0 %}{% for p in site.publications %}{% if p.category == 'disaster-resilience' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+        {{ n }}
+      </span>
+    </div>
+    <div class="topic-card__body">
+      <span class="topic-card__label">Research Theme</span>
+      <h2 class="topic-card__title">Disaster Resilience</h2>
+      <p class="topic-card__desc">Spatiotemporal modeling of disasters, pandemics, and adaptive human responses in crisis-affected systems.</p>
+      <div class="topic-card__tags">
+        <span class="topic-tag">Pandemic</span>
+        <span class="topic-tag">Crisis Roads</span>
+        <span class="topic-tag">Spatiotemporal</span>
+      </div>
+    </div>
+    <div class="topic-card__footer">
+      <span class="topic-card__cta">
+        {% assign n = 0 %}{% for p in site.publications %}{% if p.category == 'disaster-resilience' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+        {{ n }} publications <span class="topic-card__arrow">→</span>
+      </span>
+    </div>
+  </button>
 
-  <a class="topic-card" href="{{ '/publications/disaster-resilience/' | relative_url }}">
-    <div class="topic-card__icon">⚡</div>
-    <h2 class="topic-card__title">Disaster Resilience</h2>
-    <p class="topic-card__desc">Spatiotemporal modeling of disasters, pandemics, and adaptive responses in crisis-affected systems.</p>
-    <span class="topic-card__count">
-      {% assign n = 0 %}
-      {% for post in site.publications %}{% if post.category == 'disaster-resilience' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
-      {{ n }} publications →
-    </span>
-  </a>
-
-  <a class="topic-card" href="{{ '/publications/environmental-health/' | relative_url }}">
-    <div class="topic-card__icon">🌱</div>
-    <h2 class="topic-card__title">Environmental Health</h2>
-    <p class="topic-card__desc">Environmental exposure, green space, air pollution, noise, and their impacts on physical and mental health.</p>
-    <span class="topic-card__count">
-      {% assign n = 0 %}
-      {% for post in site.publications %}{% if post.category == 'environmental-health' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
-      {{ n }} publications →
-    </span>
-  </a>
+  <button class="topic-card" data-topic="environmental-health" aria-pressed="false">
+    <div class="topic-card__header topic-card__header--health">
+      <span class="topic-card__count-badge">
+        {% assign n = 0 %}{% for p in site.publications %}{% if p.category == 'environmental-health' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+        {{ n }}
+      </span>
+    </div>
+    <div class="topic-card__body">
+      <span class="topic-card__label">Research Theme</span>
+      <h2 class="topic-card__title">Environmental Health</h2>
+      <p class="topic-card__desc">Green space, air pollution, noise, and their impacts on physical and mental health outcomes.</p>
+      <div class="topic-card__tags">
+        <span class="topic-tag">Green Space</span>
+        <span class="topic-tag">Air Pollution</span>
+        <span class="topic-tag">Noise Exposure</span>
+      </div>
+    </div>
+    <div class="topic-card__footer">
+      <span class="topic-card__cta">
+        {% assign n = 0 %}{% for p in site.publications %}{% if p.category == 'environmental-health' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+        {{ n }} publications <span class="topic-card__arrow">→</span>
+      </span>
+    </div>
+  </button>
 
 </div>
+
+<!-- ── Inline paper list (JS-driven) ──────────────────────────── -->
+<div id="pub-panel" class="pub-panel" hidden>
+
+  <div class="pub-panel__header">
+    <h3 id="pub-panel-title" class="pub-panel__title"></h3>
+    <button class="pub-panel__close" id="pub-panel-close" aria-label="Close paper list">✕</button>
+  </div>
+
+  {% assign categories = "human-mobility,disaster-resilience,environmental-health" | split: "," %}
+  {% for cat in categories %}
+    <div class="pub-section" data-topic="{{ cat }}" hidden>
+      {% assign sorted = site.publications | where: "category", cat | sort: "date" | reverse %}
+      {% for paper in sorted %}
+      <div class="pub-item">
+        <span class="pub-year">{{ paper.date | date: "%Y" }}</span>
+        <div class="pub-content">
+          {% if paper.paperurl and paper.paperurl != "" %}
+            <a class="pub-title" href="{{ paper.paperurl }}" target="_blank" rel="noopener">{{ paper.title }}</a>
+          {% else %}
+            <span class="pub-title pub-title--nohref">{{ paper.title }}</span>
+          {% endif %}
+          <div class="pub-venue">{{ paper.venue }}</div>
+          <div class="pub-citation">{{ paper.citation }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+
+</div>
+
+<script>
+(function () {
+  var cards  = document.querySelectorAll('.topic-card');
+  var panel  = document.getElementById('pub-panel');
+  var panelTitle = document.getElementById('pub-panel-title');
+  var closeBtn   = document.getElementById('pub-panel-close');
+  var sections   = document.querySelectorAll('.pub-section');
+
+  var titleMap = {
+    'human-mobility':     'Human Mobility',
+    'disaster-resilience':'Disaster Resilience',
+    'environmental-health':'Environmental Health'
+  };
+
+  function activate(topic) {
+    cards.forEach(function (c) {
+      var active = c.dataset.topic === topic;
+      c.classList.toggle('is-active', active);
+      c.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    sections.forEach(function (s) {
+      s.hidden = s.dataset.topic !== topic;
+    });
+    panelTitle.textContent = titleMap[topic] || '';
+    panel.hidden = false;
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function deactivate() {
+    cards.forEach(function (c) {
+      c.classList.remove('is-active');
+      c.setAttribute('aria-pressed', 'false');
+    });
+    panel.hidden = true;
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      var topic = card.dataset.topic;
+      if (card.classList.contains('is-active')) {
+        deactivate();
+      } else {
+        activate(topic);
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', deactivate);
+})();
+</script>
