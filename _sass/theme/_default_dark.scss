@@ -38,19 +38,24 @@ $sidebar-screen-min-width   : 1024px;
 html[data-theme="dark"] {
     --global-base-color                 : #{$primary-color};
     --global-bg-color                   : #{$background};
+    --global-section-bg                 : #{mix(#fff, $background, 10%)};
     --global-footer-bg-color            : #{$background};
     --global-border-color               : #{$light-gray};
     --global-dark-border-color          : #{$background-light};
     --global-code-background-color      : #fafafa;
     --global-code-text-color            : #{$darker-gray};
     --global-fig-caption-color          : #{$light-gray};
-    --global-link-color                 : #{$link};
-    --global-link-color-hover           : #{$link-dark};
-    --global-link-color-visited         : #{$link-light};
+    --global-link-color                 : #2dd4bf;
+    --global-link-color-hover           : #14b8a6;
+    --global-link-color-visited         : #5eead4;
     --global-masthead-link-color        : #{$text};
-    --global-masthead-link-color-hover  : #{$primary-color};
+    --global-masthead-link-color-hover  : #2dd4bf;
     --global-text-color                 : #{$text};
     --global-text-color-light           : #f3f3f3;
     --global-thead-color                : #{$background-lighter};
+    /* Accent: GeoAI teal (dark mode) */
+    --global-accent-color               : #2dd4bf;
+    --global-accent-color-light         : rgba(45, 212, 191, 0.12);
+    --global-accent-color-hover         : #14b8a6;
 }
 

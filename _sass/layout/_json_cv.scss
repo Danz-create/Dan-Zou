@@ -1,5 +1,210 @@
 /* ==========================================================================
-   JSON CV
+   CV PAGE — TIMELINE, SKILLS GRID, SECTION STYLES
+   ========================================================================== */
+
+/* ---- Section headers on CV page ---- */
+.page__content h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--global-accent-color);
+  border-bottom: 1.5px solid var(--global-accent-color-light);
+  padding-bottom: 0.45rem;
+  margin-top: 2.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---- Timeline container ---- */
+.timeline {
+  position: relative;
+  padding-left: 2.4rem;
+  margin-bottom: 0.25rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0.55rem;
+    top: 0.85rem;
+    bottom: 0.5rem;
+    width: 1.5px;
+    background: linear-gradient(
+      to bottom,
+      var(--global-accent-color) 0%,
+      var(--global-accent-color-light) 100%
+    );
+    border-radius: 2px;
+  }
+}
+
+/* ---- Individual timeline item ---- */
+.timeline-item {
+  position: relative;
+  padding: 0.6rem 0.9rem 1.6rem 0.9rem;
+  margin-left: -0.9rem;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+
+  &:last-child {
+    padding-bottom: 0.4rem;
+  }
+
+  &:hover {
+    background: var(--global-accent-color-light);
+  }
+}
+
+/* ---- Timeline dot: outlined circle + filled inner dot ---- */
+.timeline-dot {
+  position: absolute;
+  left: -1.875rem;   /* centered on the 0.55rem line inside 2.4rem padding */
+  top: 1.0rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  border: 2px solid var(--global-accent-color);
+  background: var(--global-bg-color);
+  z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.22rem;
+    height: 0.22rem;
+    border-radius: 50%;
+    background: var(--global-accent-color);
+  }
+}
+
+/* ---- Current / active item: pulsing dot ---- */
+.timeline-item--current .timeline-dot {
+  box-shadow: 0 0 0 4px var(--global-accent-color-light);
+
+  &::after {
+    width: 0.28rem;
+    height: 0.28rem;
+    animation: dot-pulse 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1;   transform: translate(-50%, -50%) scale(1);   }
+  50%       { opacity: 0.5; transform: translate(-50%, -50%) scale(0.65); }
+}
+
+/* ---- Timeline row: title + date pill ---- */
+.timeline-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.75rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Level 1: position / degree name */
+.timeline-title {
+  margin: 0;
+  font-size: 0.975rem;
+  font-weight: 700;
+  color: var(--global-text-color);
+  line-height: 1.25;
+}
+
+/* Date capsule */
+.timeline-date {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--global-accent-color);
+  background: var(--global-accent-color-light);
+  padding: 0.12rem 0.65rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+/* Level 2: institution / location */
+.timeline-sub {
+  font-size: 0.845rem;
+  color: var(--global-text-color-light);
+  margin-bottom: 0.45rem;
+}
+
+/* Level 3: supervisor / dissertation / awards */
+.timeline-meta {
+  margin: 0.1rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8rem;
+  color: var(--global-text-color);
+
+  li {
+    margin-bottom: 0.22rem;
+    padding-left: 0.7rem;
+    border-left: 2px solid var(--global-accent-color-light);
+    line-height: 1.4;
+
+    b {
+      font-weight: 600;
+    }
+
+    em {
+      font-style: italic;
+      color: var(--global-text-color);
+    }
+  }
+}
+
+/* ---- Skills grid ---- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.skill-card {
+  background: var(--global-section-bg);
+  border: 1px solid var(--global-border-color);
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
+
+  &:hover {
+    box-shadow: 0 4px 14px rgba(13, 148, 136, 0.13);
+    transform: translateY(-2px);
+  }
+
+  .skill-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.45rem;
+    line-height: 1;
+  }
+
+  h4 {
+    margin: 0 0 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--global-accent-color);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.785rem;
+    color: var(--global-text-color);
+    line-height: 1.5;
+  }
+}
+
+/* ==========================================================================
+   JSON CV (legacy styles kept below)
    ========================================================================== */
 
 /* CV Template Styles */
