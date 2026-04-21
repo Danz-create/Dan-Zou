@@ -7,20 +7,70 @@ author_profile: true
 
 {% include base_path %}
 
+<p class="portfolio-intro">Selected research and applied projects across GeoAI, urban health, and spatial decision support.</p>
+
+<div class="portfolio-filter" role="group" aria-label="Filter projects">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="research">Research</button>
+  <button class="filter-btn" data-filter="software">Software</button>
+</div>
+
 <div class="portfolio-grid">
 {% assign sorted_portfolio = site.portfolio | sort: "date" | reverse %}
 {% for post in sorted_portfolio %}
-  <a class="portfolio-card" href="{{ post.url | relative_url }}">
-    <div class="portfolio-card__top">
+  <a class="portfolio-card"
+     href="{{ post.url | relative_url }}"
+     data-category="{{ post.category_filter | default: 'research' }}">
+
+    <div class="portfolio-card__header portfolio-card__header--{{ post.theme | default: 'default' }}">
       {% if post.status == "Ongoing" %}
-        <span class="proj-badge proj-badge--ongoing">● Ongoing</span>
+        <span class="proj-badge proj-badge--ongoing">
+          <span class="proj-badge__dot"></span>Ongoing
+        </span>
       {% else %}
         <span class="proj-badge proj-badge--done">✓ Completed</span>
       {% endif %}
     </div>
-    <h3 class="portfolio-card__title">{{ post.title }}</h3>
-    <p class="portfolio-card__desc">{{ post.excerpt | strip_html }}</p>
-    <span class="portfolio-card__link">Read more →</span>
+
+    <div class="portfolio-card__body">
+      <h3 class="portfolio-card__title">{{ post.title }}</h3>
+      <p class="portfolio-card__desc">{{ post.excerpt | strip_html | truncate: 130 }}</p>
+      {% if post.tags_display %}
+      <div class="portfolio-card__tags">
+        {% for tag in post.tags_display %}
+          <span class="portfolio-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="portfolio-card__footer">
+      {% if post.role %}
+        <span class="portfolio-card__role">{{ post.role }}</span>
+      {% endif %}
+      <span class="portfolio-card__link">
+        Read more <span class="portfolio-card__arrow">→</span>
+      </span>
+    </div>
+
   </a>
 {% endfor %}
 </div>
+
+<script>
+(function () {
+  var btns  = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('.portfolio-card');
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var filter = btn.dataset.filter;
+      cards.forEach(function (card) {
+        card.style.display =
+          (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>

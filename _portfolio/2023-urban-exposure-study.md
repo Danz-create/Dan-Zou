@@ -4,6 +4,10 @@ excerpt: "Personal wearable sensor + GPS + survey field study linking daily acti
 collection: portfolio
 status: "Completed"
 date: 2023-11-01
+theme: "health"
+category_filter: "research"
+role: "Study Design Lead"
+tags_display: ["Environmental Health", "GPS Mobility", "Wearable Sensing"]
 ---
 
 <span class="chip" style="background:#e5e7eb; color:#1d1d1f; padding:.3rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600;">Completed · May – Nov. 2023</span>

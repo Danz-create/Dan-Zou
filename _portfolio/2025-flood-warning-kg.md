@@ -4,6 +4,10 @@ excerpt: "Building a knowledge graph that fuses human-mobility signals with floo
 collection: portfolio
 status: "Ongoing"
 date: 2025-12-01
+theme: "flood"
+category_filter: "research"
+role: "Postdoctoral Researcher"
+tags_display: ["GeoAI", "LLM", "Knowledge Graph", "Disaster"]
 ---
 
 <span class="chip chip--primary" style="background: rgba(0,122,255,0.1); color:#007aff; padding:.3rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600;">Ongoing · Dec. 2025 – Present</span>

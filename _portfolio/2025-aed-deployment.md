@@ -4,6 +4,10 @@ excerpt: "Optimizing automated external defibrillator placement based on urban b
 collection: portfolio
 status: "Completed"
 date: 2025-01-01
+theme: "network"
+category_filter: "software"
+role: "Lead Developer"
+tags_display: ["Spatial Optimization", "GIS", "Public Health"]
 ---
 
 <span class="chip" style="background:#e5e7eb; color:#1d1d1f; padding:.3rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600;">Completed · 2025</span>
