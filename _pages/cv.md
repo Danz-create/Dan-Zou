@@ -39,7 +39,7 @@ redirect_from:
     </div>
     <div class="timeline-sub">Pierre Louis Institute of Epidemiology and Public Health, Paris, France</div>
     <ul class="timeline-meta">
-      <li><b>Co-supervisor:</b> Dr. Basile Chaix</li>
+      <li><b>Co-supervisor:</b> <a href="https://scholar.google.com/citations?user=bKiv_QIAAAAJ&hl=fr">Dr. Basile Chaix</a></li>
     </ul>
   </div>
 
