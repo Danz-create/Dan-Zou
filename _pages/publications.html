@@ -17,22 +17,10 @@ author_profile: true
 <!-- ── Topic cards ─────────────────────────────────────────────── -->
 <div class="topic-grid">
 
-  <button class="topic-card" data-topic="human-mobility" aria-pressed="false">
-    <div class="topic-card__header topic-card__header--mobility">
-      <span class="topic-card__count-badge">
-        {% assign n = 0 %}{% for p in site.publications %}{% if p.category == 'human-mobility' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
-        {{ n }}
-      </span>
-    </div>
+  <button class="topic-card topic-card--mobility" data-topic="human-mobility" aria-pressed="false">
     <div class="topic-card__body">
-      <span class="topic-card__label">Research Theme</span>
       <h2 class="topic-card__title">Human Mobility</h2>
       <p class="topic-card__desc">GPS trajectories, travel behavior, and predictive movement modeling at individual and collective scales.</p>
-      <div class="topic-card__tags">
-        <span class="topic-tag">GPS Trajectories</span>
-        <span class="topic-tag">Travel Behavior</span>
-        <span class="topic-tag">Predictive Modeling</span>
-      </div>
     </div>
     <div class="topic-card__footer">
       <span class="topic-card__cta">
@@ -42,22 +30,10 @@ author_profile: true
     </div>
   </button>
 
-  <button class="topic-card" data-topic="disaster-resilience" aria-pressed="false">
-    <div class="topic-card__header topic-card__header--disaster">
-      <span class="topic-card__count-badge">
-        {% assign n = 0 %}{% for p in site.publications %}{% if p.category == 'disaster-resilience' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
-        {{ n }}
-      </span>
-    </div>
+  <button class="topic-card topic-card--disaster" data-topic="disaster-resilience" aria-pressed="false">
     <div class="topic-card__body">
-      <span class="topic-card__label">Research Theme</span>
       <h2 class="topic-card__title">Disaster Resilience</h2>
-      <p class="topic-card__desc">Spatiotemporal modeling of disasters, pandemics, and adaptive human responses in crisis-affected systems.</p>
-      <div class="topic-card__tags">
-        <span class="topic-tag">Pandemic</span>
-        <span class="topic-tag">Crisis Roads</span>
-        <span class="topic-tag">Spatiotemporal</span>
-      </div>
+      <p class="topic-card__desc">Spatiotemporal modeling of disasters, pandemics, and adaptive responses in crisis-affected systems.</p>
     </div>
     <div class="topic-card__footer">
       <span class="topic-card__cta">
@@ -67,22 +43,10 @@ author_profile: true
     </div>
   </button>
 
-  <button class="topic-card" data-topic="environmental-health" aria-pressed="false">
-    <div class="topic-card__header topic-card__header--health">
-      <span class="topic-card__count-badge">
-        {% assign n = 0 %}{% for p in site.publications %}{% if p.category == 'environmental-health' %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
-        {{ n }}
-      </span>
-    </div>
+  <button class="topic-card topic-card--health" data-topic="environmental-health" aria-pressed="false">
     <div class="topic-card__body">
-      <span class="topic-card__label">Research Theme</span>
       <h2 class="topic-card__title">Environmental Health</h2>
-      <p class="topic-card__desc">Green space, air pollution, noise, and their impacts on physical and mental health outcomes.</p>
-      <div class="topic-card__tags">
-        <span class="topic-tag">Green Space</span>
-        <span class="topic-tag">Air Pollution</span>
-        <span class="topic-tag">Noise Exposure</span>
-      </div>
+      <p class="topic-card__desc">Environmental exposure, green space, air pollution, and health outcomes.</p>
     </div>
     <div class="topic-card__footer">
       <span class="topic-card__cta">
@@ -99,7 +63,7 @@ author_profile: true
 
   <div class="pub-panel__header">
     <h3 id="pub-panel-title" class="pub-panel__title"></h3>
-    <button class="pub-panel__close" id="pub-panel-close" aria-label="Close paper list">✕</button>
+    <button class="pub-panel__close" id="pub-panel-close" aria-label="Close">✕</button>
   </div>
 
   {% assign categories = "human-mobility,disaster-resilience,environmental-health" | split: "," %}
@@ -134,8 +98,8 @@ author_profile: true
   var sections   = document.querySelectorAll('.pub-section');
 
   var titleMap = {
-    'human-mobility':     'Human Mobility',
-    'disaster-resilience':'Disaster Resilience',
+    'human-mobility':      'Human Mobility',
+    'disaster-resilience': 'Disaster Resilience',
     'environmental-health':'Environmental Health'
   };
 
@@ -145,9 +109,7 @@ author_profile: true
       c.classList.toggle('is-active', active);
       c.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
-    sections.forEach(function (s) {
-      s.hidden = s.dataset.topic !== topic;
-    });
+    sections.forEach(function (s) { s.hidden = s.dataset.topic !== topic; });
     panelTitle.textContent = titleMap[topic] || '';
     panel.hidden = false;
     panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -163,12 +125,7 @@ author_profile: true
 
   cards.forEach(function (card) {
     card.addEventListener('click', function () {
-      var topic = card.dataset.topic;
-      if (card.classList.contains('is-active')) {
-        deactivate();
-      } else {
-        activate(topic);
-      }
+      card.classList.contains('is-active') ? deactivate() : activate(card.dataset.topic);
     });
   });
 

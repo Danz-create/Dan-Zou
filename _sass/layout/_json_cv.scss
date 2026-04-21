@@ -739,19 +739,19 @@
 /* ── 3-column topic card grid ────────────────────────────────── */
 .topic-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.1rem;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-/* ── Topic card (button element for accessibility) ─────────── */
+/* ── Topic card — flat Monet-palette card ────────────────────── */
 .topic-card {
   display: flex;
   flex-direction: column;
-  border: 1.5px solid var(--global-border-color);
+  border: 1.5px solid transparent;
   border-radius: 14px;
   overflow: hidden;
-  background: var(--global-section-bg);
+  background: #E7E8F2;       /* default; overridden by modifier */
   cursor: pointer;
   text-align: left;
   font-family: inherit;
@@ -762,183 +762,61 @@
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 22px rgba(13, 148, 136, 0.13);
+    box-shadow: 0 6px 18px rgba(110, 114, 160, 0.18);
     border-color: var(--global-accent-color);
 
-    .topic-card__arrow {
-      transform: translateX(4px);
-    }
+    .topic-card__arrow { transform: translateX(4px); }
   }
 
   &.is-active {
     border-color: var(--global-accent-color);
     box-shadow: 0 0 0 3px var(--global-accent-color-light),
-                0 6px 20px rgba(13, 148, 136, 0.15);
+                0 4px 16px rgba(141, 144, 184, 0.2);
 
-    .topic-card__title {
-      color: var(--global-accent-color);
-    }
-
-    .topic-card__arrow {
-      transform: translateX(4px);
-    }
-
-    .topic-card__header {
-      filter: brightness(1.12);
-    }
+    .topic-card__title { color: var(--global-accent-color-hover); }
+    .topic-card__arrow { transform: translateX(4px); }
   }
 }
 
-/* ── Visual header strip ────────────────────────────────────── */
-.topic-card__header {
-  position: relative;
-  height: 90px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-  padding: 0.7rem 0.9rem;
-  flex-shrink: 0;
-  transition: filter 0.22s ease;
-}
-
-/* Mobility: navy/slate + GPS path dashes */
-.topic-card__header--mobility {
-  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(
-        90deg,
-        rgba(255,255,255,0.07) 0px,
-        rgba(255,255,255,0.07) 6px,
-        transparent 6px,
-        transparent 18px
-      );
-  }
-}
-
-/* Disaster: amber/rust + concentric warning rings */
-.topic-card__header--disaster {
-  background: linear-gradient(135deg, #78350f 0%, #d97706 100%);
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-radial-gradient(
-        circle at 50% 50%,
-        transparent 0,
-        transparent 14px,
-        rgba(255,255,255,0.07) 14px,
-        rgba(255,255,255,0.07) 15.5px
-      );
-  }
-}
-
-/* Health: sage/emerald + horizontal wave lines */
-.topic-card__header--health {
-  background: linear-gradient(135deg, #064e3b 0%, #059669 100%);
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.06) 0px,
-        rgba(255,255,255,0.06) 1px,
-        transparent 1px,
-        transparent 14px
-      );
-  }
-}
-
-/* Count badge on header */
-.topic-card__count-badge {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  color: #ffffff;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0;
-}
+/* Card color themes */
+.topic-card--mobility { background: #E7E8F2; }
+.topic-card--disaster { background: #EEE8E4; }
+.topic-card--health   { background: #E6ECE6; }
 
 /* ── Card body ───────────────────────────────────────────────── */
 .topic-card__body {
   flex: 1;
-  padding: 0.85rem 1rem 0.5rem;
+  padding: 1.3rem 1.2rem 0.8rem;
   display: flex;
   flex-direction: column;
 }
 
-.topic-card__label {
-  display: block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--global-text-color-light);
-  margin-bottom: 0.2rem;
-}
-
 .topic-card__title {
-  margin: 0 0 0.4rem;
-  font-size: 1rem;
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var(--global-text-color);
+  color: #4E5663;
   line-height: 1.2;
   transition: color 0.2s ease;
 }
 
 .topic-card__desc {
-  margin: 0 0 0.65rem;
-  font-size: 0.78rem;
-  color: var(--global-text-color-light);
-  line-height: 1.5;
+  margin: 0;
+  font-size: 0.8rem;
+  color: #6F7892;
+  line-height: 1.55;
   flex: 1;
-}
-
-/* Keyword chips */
-.topic-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.28rem;
-  margin-top: auto;
-}
-
-.topic-tag {
-  font-size: 0.64rem;
-  font-weight: 600;
-  color: var(--global-accent-color);
-  background: var(--global-accent-color-light);
-  border: 1px solid rgba(13, 148, 136, 0.2);
-  border-radius: 10px;
-  padding: 0.08rem 0.46rem;
 }
 
 /* ── Card footer ─────────────────────────────────────────────── */
 .topic-card__footer {
-  padding: 0.55rem 1rem 0.7rem;
-  border-top: 1px solid var(--global-border-color);
-  margin-top: 0.6rem;
+  padding: 0.7rem 1.2rem 0.9rem;
+  border-top: 1px solid rgba(110, 114, 160, 0.15);
+  margin-top: 0.9rem;
 }
 
 .topic-card__cta {
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--global-accent-color);
   letter-spacing: 0.02em;

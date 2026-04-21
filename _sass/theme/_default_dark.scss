@@ -53,9 +53,10 @@ html[data-theme="dark"] {
     --global-text-color                 : #{$text};
     --global-text-color-light           : #f3f3f3;
     --global-thead-color                : #{$background-lighter};
-    /* Accent: GeoAI teal (dark mode) */
-    --global-accent-color               : #2dd4bf;
-    --global-accent-color-light         : rgba(45, 212, 191, 0.12);
-    --global-accent-color-hover         : #14b8a6;
+    /* Accent: soft lavender (dark mode) */
+    --global-accent-color               : #A8ABCF;
+    --global-accent-color-light         : rgba(168, 171, 207, 0.14);
+    --global-accent-color-hover         : #8D90B8;
+    --global-sidebar-bg                 : #1E2438;
 }
 
