@@ -39,7 +39,7 @@ redirect_from:
     </div>
     <div class="timeline-sub">Pierre Louis Institute of Epidemiology and Public Health, Paris, France</div>
     <ul class="timeline-meta">
-      <li><b>Co-supervisor:</b> <a href="https://scholar.google.com/citations?user=MY34aGEAAAAJ&hl=en">Dr. Basile Chaix</a></li>
+      <li><b>Co-supervisor:</b> Dr. Basile Chaix</li>
     </ul>
   </div>
 
@@ -50,6 +50,9 @@ redirect_from:
       <span class="timeline-date">Sep. 2018 – Jul. 2020</span>
     </div>
     <div class="timeline-sub">Sun Yat-sen University, Guangzhou, China</div>
+    <ul class="timeline-meta">
+      <li><b>Supervisor:</b> <a href="https://scholar.google.com/citations?user=MY34aGEAAAAJ&hl=en">Prof. Qiuping Li</a></li>
+    </ul>
   </div>
 
   <div class="timeline-item">
